@@ -263,8 +263,12 @@
     25%{ transform:translateX(-5px); }
     75%{ transform:translateX(5px); }
   }
-  .quiz-feedback{ min-height:20px; margin:0; font-size:15px; font-weight:500; color:var(--on-dark); }
+  .quiz-feedback{ min-height:32px; margin:0; font-size:14px; font-weight:500; color:var(--on-dark); }
   .quiz-feedback.good{ font-weight:900; }
+  .quiz-feedback.oops{
+    display:inline-block; font-weight:900; font-size:15px; color:#fff;
+    background:var(--wrong); padding:6px 16px; border-radius:999px;
+  }
 
   .round-clear{
     width:min(320px, 82vw);
@@ -865,7 +869,7 @@
     } else {
       btn.classList.add('wrong');
       quizFeedback.textContent = 'おしい！もういちど えらんでみてね';
-      quizFeedback.className = 'quiz-feedback';
+      quizFeedback.className = 'quiz-feedback oops';
       setTimeout(function(){ btn.classList.remove('wrong'); }, 450);
     }
   }
