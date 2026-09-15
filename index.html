@@ -66,84 +66,35 @@
   }
 
   /* ---------- FV ---------- */
-  .fv{
-    position:relative;
-    overflow:hidden;
-    padding:0;
-  }
-  .fv-sky{ position:absolute; inset:0; z-index:0; }
-  .fv-sky svg{ display:block; width:100%; height:100%; }
-  .leaf{ animation:leafDrift 9s ease-in-out infinite; transform-origin:center; }
-  .leaf:nth-child(2){ animation-delay:-2.5s; animation-duration:11s; }
-  .leaf:nth-child(3){ animation-delay:-5s; animation-duration:8s; }
-  .leaf:nth-child(4){ animation-delay:-1.2s; animation-duration:10s; }
-  @keyframes leafDrift{
-    0%,100%{ transform:translateY(0) rotate(0deg); }
-    50%{ transform:translateY(18px) rotate(14deg); }
-  }
-  @media (prefers-reduced-motion:reduce){ .leaf{ animation:none; } }
+  .fv{ padding:0; }
+  .fv-photo{ display:block; width:100%; height:auto; }
 
-  .fv-content{
-    position:relative;
-    z-index:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    gap:18px;
-    padding:88px 20px;
-    min-height:480px;
-  }
-  .fv-eyebrow{
-    margin:0;
-    font-family:'Jost',sans-serif;
-    font-size:13px;
-    font-weight:600;
-    letter-spacing:.18em;
-    color:#FFFFFF;
-    text-transform:uppercase;
-  }
-  .fv-title{
-    margin:0;
-    font-family:'Zen Maru Gothic',sans-serif;
-    font-weight:900;
-    font-size:clamp(30px,6.5vw,50px);
-    line-height:1.4;
-    color:#FFFFFF;
-    text-wrap:balance;
-  }
-  .fv-lead{
-    margin:0;
-    font-size:15px;
-    line-height:1.9;
-    color:#FFFFFF;
-    max-width:32ch;
-  }
   .fv-actions{
-    margin-top:6px;
+    padding:18px 20px 22px;
     display:flex;
     flex-wrap:wrap;
     align-items:center;
     justify-content:center;
     gap:10px;
+    background:var(--paper);
   }
   .fv-scroll{
     display:inline-flex;
     align-items:center;
     gap:6px;
-    color:#FFFFFF;
+    color:var(--ink);
     text-decoration:none;
-    font-size:13px;
+    font-size:14px;
     font-weight:700;
-    border:1.5px solid rgba(255,255,255,.7);
+    border:2px solid var(--ink);
     border-radius:999px;
-    padding:9px 20px;
+    padding:11px 22px;
   }
   .fv-scroll svg{ width:11px; height:11px; }
   .fv-scroll.is-play{
     background:var(--pink);
     border-color:var(--pink);
+    color:#FFFFFF;
   }
 
   /* ---------- Outing ---------- */
@@ -312,6 +263,9 @@
     transition:height .2s ease;
   }
 
+  /* ---------- Home time ---------- */
+  .hometime{ background:var(--paper); }
+
   /* ---------- Closing CTA ---------- */
   .cta-close{ background:var(--yellow); }
   .cta-close .eyebrow{ color:var(--ink); }
@@ -360,57 +314,14 @@
 <div class="wrap">
 
 <section class="fv">
-  <div class="fv-sky">
-    <svg viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="fvSky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#4E93C7"/>
-          <stop offset="55%" stop-color="#8FC1DE"/>
-          <stop offset="100%" stop-color="#FBD9A8"/>
-        </linearGradient>
-        <radialGradient id="fvSun" cx="50%" cy="50%" r="50%">
-          <stop offset="0" stop-color="#FFF3D6" stop-opacity="0.95"/>
-          <stop offset="60%" stop-color="#FFD98A" stop-opacity="0.55"/>
-          <stop offset="100%" stop-color="#FFD98A" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-      <rect width="1200" height="640" fill="url(#fvSky)"/>
-      <circle cx="860" cy="200" r="170" fill="url(#fvSun)"/>
-      <circle cx="860" cy="200" r="58" fill="#FFF6DE" opacity="0.9"/>
-      <g fill="#FFFFFF" opacity="0.55">
-        <ellipse cx="220" cy="150" rx="95" ry="34"/>
-        <ellipse cx="300" cy="130" rx="60" ry="26"/>
-        <ellipse cx="150" cy="130" rx="55" ry="24"/>
-      </g>
-      <g fill="#FFFFFF" opacity="0.4">
-        <ellipse cx="980" cy="380" rx="120" ry="38"/>
-        <ellipse cx="1080" cy="360" rx="70" ry="28"/>
-      </g>
-      <g fill="#E7EFF4" opacity="0.5">
-        <ellipse cx="150" cy="480" rx="160" ry="44"/>
-        <ellipse cx="40" cy="460" rx="90" ry="34"/>
-      </g>
-      <g>
-        <ellipse class="leaf" cx="140" cy="260" rx="9" ry="13" fill="#C97A3E" transform="rotate(20 140 260)"/>
-        <ellipse class="leaf" cx="1020" cy="470" rx="8" ry="12" fill="#E0A63E" transform="rotate(-15 1020 470)"/>
-        <ellipse class="leaf" cx="640" cy="150" rx="7" ry="11" fill="#C97A3E" transform="rotate(35 640 150)"/>
-        <ellipse class="leaf" cx="420" cy="420" rx="8" ry="12" fill="#8FA25E" transform="rotate(-25 420 420)"/>
-      </g>
-      <path d="M0 560 C 200 520, 380 590, 600 550 C 820 512, 1000 570, 1200 530 L1200 640 L0 640 Z" fill="#F3E6D2"/>
-    </svg>
-  </div>
-  <div class="fv-content">
-    <p class="fv-eyebrow">babuuu. Autumn Feature</p>
-    <h1 class="fv-title">お出かけ日和も、<br>おうち日和も。</h1>
-    <p class="fv-lead">秋は、晴れの日もあれば雨の日もある。どちらの日も、お子さんとの時間がもっと楽しくなるように。</p>
-    <div class="fv-actions">
-      <a class="fv-scroll" href="#shopping">アイテムを見る
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
-      </a>
-      <a class="fv-scroll is-play" href="#play">お子さまと一緒にゲームをしてみる？
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
-      </a>
-    </div>
+  <img class="fv-photo" src="fv-hero.jpg" alt="お出かけ日和も、おうち日和も。秋は、晴れの日もあれば雨の日もある。どちらの日も、お子さんとの時間がもっと楽しくなるように。">
+  <div class="fv-actions">
+    <a class="fv-scroll" href="#shopping">アイテムを見る
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+    </a>
+    <a class="fv-scroll is-play" href="#play">お子さまと一緒にゲームをしてみる？
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+    </a>
   </div>
 </section>
 
@@ -713,6 +624,98 @@
   </div>
   <div class="game-frame">
     <iframe src="game.html" title="まどそうじゲーム" loading="lazy"></iframe>
+  </div>
+</section>
+
+<section class="hometime" id="hometime">
+  <div class="section-head">
+    <p class="eyebrow">HOME TIME / おうち時間</p>
+    <h2>お家時間を快適に。</h2>
+    <p class="lead">おでかけの後は、おうちでゆっくり。babuuuのコレ、おすすめです！</p>
+  </div>
+
+  <div class="product-group">
+    <p class="group-label">ベビーチェア</p>
+    <div class="product-grid">
+      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00116/" target="_blank" rel="noopener">
+        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4945680207317_s1.jpg" alt="リッチェル フィージー R ベビーチェア" loading="lazy"></div>
+        <div class="product-body">
+          <p class="product-name">リッチェル フィージー R</p>
+          <p class="product-desc">テーブル付きのローチェアで、お部屋でも食事に集中できる。</p>
+          <ul class="product-tags"><li>ベルト付き</li><li>床置きローチェア</li></ul>
+          <div class="product-meta">
+            <span class="product-price"><span class="num">9,680</span>円</span>
+          </div>
+        </div>
+      </a>
+      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00127/" target="_blank" rel="noopener">
+        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4945680207348_s1.jpg" alt="リッチェル 2WAYごきげんチェア" loading="lazy"></div>
+        <div class="product-body">
+          <p class="product-name">リッチェル 2WAYごきげんチェア</p>
+          <p class="product-desc">座面高さを2段階調節。成長に合わせて長く使える。</p>
+          <ul class="product-tags"><li>2段階高さ調整</li><li>テーブル付き</li></ul>
+          <div class="product-meta">
+            <span class="product-price"><span class="num">6,930</span>円</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="product-group">
+    <p class="group-label">ベビーゲート</p>
+    <div class="product-grid">
+      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00080/" target="_blank" rel="noopener">
+        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4955303003561_s1.jpg" alt="日本育児 おくだけ とおせんぼ S ベビーゲート" loading="lazy"></div>
+        <div class="product-body">
+          <p class="product-name">日本育児 おくだけ とおせんぼ S</p>
+          <p class="product-desc">置くだけ設置で工具不要。賃貸のおうちでも気軽に使える。</p>
+          <ul class="product-tags"><li>置くだけ設置</li><li>突っ張り棒不要</li></ul>
+          <div class="product-meta">
+            <span class="product-price"><span class="num">9,870</span>円</span>
+          </div>
+        </div>
+      </a>
+      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00086/" target="_blank" rel="noopener">
+        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4955303001710_s1.jpg" alt="日本育児 スマートゲイトII ベビーゲート" loading="lazy"></div>
+        <div class="product-body">
+          <p class="product-name">日本育児 スマートゲイトII</p>
+          <p class="product-desc">階段下やドア際にしっかりガード。ロック付きで安心。</p>
+          <ul class="product-tags"><li>幅調整可</li><li>ロック付き</li></ul>
+          <div class="product-meta">
+            <span class="product-price"><span class="num">11,990</span>円</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="product-group">
+    <p class="group-label">ベビー食器</p>
+    <div class="product-grid">
+      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00215/" target="_blank" rel="noopener">
+        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4972990183918_s1.jpg" alt="コンビ かさなるベビー食器セット" loading="lazy"></div>
+        <div class="product-body">
+          <p class="product-name">コンビ かさなるベビー食器セット</p>
+          <p class="product-desc">重ねて収納できる、おしゃれなギフト向け食器セット。</p>
+          <ul class="product-tags"><li>スタッキング収納</li><li>ギフトにも</li></ul>
+          <div class="product-meta">
+            <span class="product-price"><span class="num">2,200</span>円</span>
+          </div>
+        </div>
+      </a>
+      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00282/" target="_blank" rel="noopener">
+        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4945680206105_s1.jpg" alt="リッチェル トライ マグセットプレミアム" loading="lazy"></div>
+        <div class="product-body">
+          <p class="product-name">リッチェル トライ マグセットプレミアム</p>
+          <p class="product-desc">ストロー飲み・コップ飲みの練習に。お手入れも簡単。</p>
+          <ul class="product-tags"><li>ストロー&コップ練習</li><li>お手入れ簡単</li></ul>
+          <div class="product-meta">
+            <span class="product-price"><span class="num">3,960</span>円</span>
+          </div>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
