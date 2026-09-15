@@ -460,12 +460,6 @@
 
   <div class="progress-dots" id="progressDots" aria-hidden="true"></div>
 
-  <div class="quiz" id="quizPanel" hidden>
-    <p class="quiz-q">これは なにかな？</p>
-    <div class="choices" id="choices"></div>
-    <p class="quiz-feedback" id="quizFeedback" aria-live="polite"></p>
-  </div>
-
   <div class="window-wrap">
     <div class="sun-gauge" id="sunGauge" aria-hidden="true"></div>
     <div class="frame">
@@ -494,6 +488,12 @@
 
   <div class="controls" id="wipingControls">
     <button class="ghost-btn" id="autoWipeBtn" type="button">ゆびで なぞれないときは ここをタップ</button>
+  </div>
+
+  <div class="quiz" id="quizPanel" hidden>
+    <p class="quiz-q">これは なにかな？</p>
+    <div class="choices" id="choices"></div>
+    <p class="quiz-feedback" id="quizFeedback" aria-live="polite"></p>
   </div>
 
   <div class="round-clear" id="roundClear" hidden>
@@ -696,7 +696,7 @@
   function updateProgress(){
     var p = Math.min(1, currentPercent());
     sunGauge.style.setProperty('--p', p.toFixed(3));
-    if(!wipeLocked && p >= 0.62) lockWipe();
+    if(!wipeLocked && p >= 0.8) lockWipe();
   }
 
   function lockWipe(){
@@ -808,12 +808,13 @@
     if(roundSettled) return;
     var round = ROUNDS[roundIndex];
     if(choiceId === round.id){
+      var wipedFast = currentPercent() < 0.8;
       roundSettled = true;
       wipeLocked = true;
       canvas.style.opacity = '0';
       hint.classList.add('hidden');
       wipingControls.hidden = true;
-      quizFeedback.textContent = 'せいかい！';
+      quizFeedback.textContent = wipedFast ? 'はやい！せいかい！' : 'せいかい！';
       quizFeedback.className = 'quiz-feedback good';
       spawnPetals(10);
       setTimeout(function(){

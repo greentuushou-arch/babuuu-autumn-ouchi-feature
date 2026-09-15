@@ -18,9 +18,17 @@
   html{ scroll-behavior:smooth; }
   body{
     margin:0;
-    background:var(--paper);
+    background:var(--yellow);
     color:var(--ink);
     font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;
+  }
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    background:var(--paper);
+    position:relative;
+    box-shadow:0 0 40px rgba(0,0,0,.18);
+    overflow:hidden;
   }
   img{ max-width:100%; display:block; }
   .num{ font-family:'Jost',sans-serif; font-variant-numeric:tabular-nums; }
@@ -334,6 +342,7 @@
 </style>
 </head>
 <body>
+<div class="wrap">
 
 <section class="fv">
   <div class="fv-sky">
@@ -604,6 +613,7 @@
   </div>
 </section>
 
+</div>
 <script>
 (function(){
   var el = document.getElementById('transition');
