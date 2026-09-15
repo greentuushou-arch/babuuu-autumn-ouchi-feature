@@ -232,28 +232,30 @@
   }
 
   .quiz{
-    width:min(340px, 84vw);
+    width:min(360px, 94vw);
     display:flex; flex-direction:column; align-items:center; gap:14px;
   }
   .quiz-q{ margin:0; font-weight:700; font-size:19px; color:var(--on-dark); }
   .choices{
-    display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
+    display:flex; flex-wrap:nowrap; justify-content:center; gap:8px;
     width:100%;
   }
   .choice{
-    display:flex; flex-direction:column; align-items:center; gap:6px;
-    width:100px; padding:12px 6px 10px;
+    display:flex; flex-direction:column; align-items:center; gap:4px;
+    flex:1 1 0; min-width:0; max-width:112px;
+    padding:10px 4px 8px;
     background:var(--card-bg);
     border:2px solid #F0E6F5;
-    border-radius:18px;
+    border-radius:16px;
     cursor:pointer;
-    font-size:15px;
+    font-size:12.5px;
     font-weight:500;
     color:var(--ink);
     box-shadow:0 8px 16px -12px rgba(60,40,10,.3);
   }
+  .choice span{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
   .choice:hover{ border-color:var(--sun); }
-  .choice svg{ width:42px; height:42px; }
+  .choice svg{ width:34px; height:34px; }
   .choice.wrong{ animation:shake .4s ease; border-color:var(--wrong); }
   @media (prefers-reduced-motion: reduce){ .choice.wrong{animation:none; border-color:var(--wrong);} }
   @keyframes shake{
