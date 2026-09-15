@@ -565,17 +565,38 @@
   var couponReveal = document.getElementById('couponReveal');
   var couponRevealBtn = document.getElementById('couponRevealBtn');
 
-  var ROUNDS = [
-    { type:'quiz', id:'strawberry', label:'いちご', bg:'#1E9FD6',
-      choices:[{id:'strawberry',label:'いちご'},{id:'apple',label:'りんご'},{id:'orange',label:'みかん'}] },
-    { type:'quiz', id:'banana', label:'ばなな', bg:'#FF4C86',
-      choices:[{id:'banana',label:'ばなな'},{id:'grape',label:'ぶどう'},{id:'peach',label:'もも'}] },
-    { type:'quiz', id:'bear', label:'くま', bg:'#FFC300',
-      choices:[{id:'bear',label:'くま'},{id:'cat',label:'ねこ'},{id:'dog',label:'いぬ'}] },
-    { type:'quiz', id:'rabbit', label:'うさぎ', bg:'#1E9FD6',
-      choices:[{id:'rabbit',label:'うさぎ'},{id:'squirrel',label:'りす'},{id:'elephant',label:'ぞう'}] },
-    { type:'coupon' }
-  ];
+  var FRUITS = ['strawberry','apple','orange','banana','grape','peach'];
+  var ANIMALS = ['bear','cat','dog','rabbit','squirrel','elephant'];
+  var LABELS = {
+    strawberry:'いちご', apple:'りんご', orange:'みかん', banana:'ばなな', grape:'ぶどう', peach:'もも',
+    bear:'くま', cat:'ねこ', dog:'いぬ', rabbit:'うさぎ', squirrel:'りす', elephant:'ぞう'
+  };
+  var ROUND_BG = ['#1E9FD6','#FF4C86','#FFC300','#1E9FD6'];
+
+  function shuffle(arr){
+    var a = arr.slice();
+    for(var i = a.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function buildRounds(){
+    var picks = shuffle(shuffle(FRUITS).slice(0, 2).concat(shuffle(ANIMALS).slice(0, 2)));
+    var rounds = picks.map(function(id, i){
+      var pool = FRUITS.indexOf(id) !== -1 ? FRUITS : ANIMALS;
+      var distractorPool = pool.filter(function(pid){ return picks.indexOf(pid) === -1; });
+      var choices = [id].concat(shuffle(distractorPool).slice(0, 2)).map(function(cid){
+        return { id:cid, label:LABELS[cid] };
+      });
+      return { type:'quiz', id:id, label:LABELS[id], bg:ROUND_BG[i], choices:choices };
+    });
+    rounds.push({ type:'coupon' });
+    return rounds;
+  }
+
+  var ROUNDS = buildRounds();
 
   function mysteryScene(){
     return ''
@@ -627,15 +648,6 @@
   var lastX = null, lastY = null;
   var dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
   var petalColors = ['#FFC300', '#FF4C86', '#1E9FD6', '#FFFFFF'];
-
-  function shuffle(arr){
-    var a = arr.slice();
-    for(var i = a.length - 1; i > 0; i--){
-      var j = Math.floor(Math.random() * (i + 1));
-      var t = a[i]; a[i] = a[j]; a[j] = t;
-    }
-    return a;
-  }
 
   function cssSize(){ var r = glass.getBoundingClientRect(); return { w:r.width, h:r.height }; }
   function sizeCanvas(){
@@ -918,7 +930,7 @@
   }
 
   nextBtn.addEventListener('click', function(){ startRound(roundIndex + 1); });
-  resetBtn.addEventListener('click', function(){ startRound(0); });
+  resetBtn.addEventListener('click', function(){ ROUNDS = buildRounds(); startRound(0); });
 
   window.addEventListener('resize', function(){
     if(wipeLocked) return;
