@@ -146,7 +146,13 @@
     pointer-events:none; opacity:1; transition:opacity .4s ease; z-index:3;
   }
   .hint.hidden{opacity:0;}
-  .hint svg{width:52%;height:52%;}
+  .hint-inner{ display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .hint svg{width:44%;height:44%;}
+  .hint-label{
+    margin:0; font-weight:900; font-size:14px; color:var(--ink);
+    background:#FFFFFF; padding:6px 16px; border-radius:999px;
+    white-space:nowrap;
+  }
   .hint-arrow{
     fill:none; stroke:rgba(62,50,38,.5); stroke-width:3; stroke-linecap:round;
     stroke-dasharray:6 8; animation:dash 2.4s linear infinite;
@@ -492,9 +498,12 @@
         <svg class="scene" id="sceneSvg" viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
         <canvas class="fog" id="fogCanvas"></canvas>
         <div class="hint" id="hint">
-          <svg viewBox="0 0 100 100">
-            <path class="hint-arrow" d="M28 34 C 20 55, 35 74, 55 70 C 72 66, 78 48, 68 36 C 60 26, 45 28, 42 40" />
-          </svg>
+          <div class="hint-inner">
+            <svg viewBox="0 0 100 100">
+              <path class="hint-arrow" d="M28 34 C 20 55, 35 74, 55 70 C 72 66, 78 48, 68 36 C 60 26, 45 28, 42 40" />
+            </svg>
+            <p class="hint-label">くもりを ふきふき</p>
+          </div>
         </div>
         <div class="rainbow-layer" id="rainbowLayer">
           <svg viewBox="0 0 320 400" preserveAspectRatio="none">
