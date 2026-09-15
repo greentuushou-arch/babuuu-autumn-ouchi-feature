@@ -71,8 +71,8 @@
     overflow:hidden;
     padding:0;
   }
-  .fv-sky{ position:relative; width:100%; }
-  .fv-sky svg{ display:block; width:100%; height:auto; }
+  .fv-sky{ position:absolute; inset:0; z-index:0; }
+  .fv-sky svg{ display:block; width:100%; height:100%; }
   .leaf{ animation:leafDrift 9s ease-in-out infinite; transform-origin:center; }
   .leaf:nth-child(2){ animation-delay:-2.5s; animation-duration:11s; }
   .leaf:nth-child(3){ animation-delay:-5s; animation-duration:8s; }
@@ -84,15 +84,16 @@
   @media (prefers-reduced-motion:reduce){ .leaf{ animation:none; } }
 
   .fv-content{
-    position:absolute;
-    inset:0;
+    position:relative;
+    z-index:1;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
     gap:18px;
-    padding:0 20px;
+    padding:88px 20px;
+    min-height:480px;
   }
   .fv-eyebrow{
     margin:0;
@@ -119,8 +120,15 @@
     color:#FFFFFF;
     max-width:32ch;
   }
-  .fv-scroll{
+  .fv-actions{
     margin-top:6px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+  }
+  .fv-scroll{
     display:inline-flex;
     align-items:center;
     gap:6px;
@@ -133,6 +141,10 @@
     padding:9px 20px;
   }
   .fv-scroll svg{ width:11px; height:11px; }
+  .fv-scroll.is-play{
+    background:var(--pink);
+    border-color:var(--pink);
+  }
 
   /* ---------- Outing ---------- */
   .outing{ background:var(--paper); }
@@ -267,7 +279,7 @@
   }
   .transition-text{
     position:absolute;
-    left:0; right:0; top:9%;
+    left:0; right:0; top:38%;
     margin:0;
     text-align:center;
     font-family:'Zen Maru Gothic',sans-serif;
@@ -335,6 +347,9 @@
     border:2px solid var(--ink);
   }
 
+  .banner-strip{ padding:0; }
+  .banner-strip img{ width:100%; height:auto; }
+
   @media (max-width:600px){
     section{ padding:48px 16px; }
     .product-group{ margin-bottom:36px; }
@@ -346,7 +361,7 @@
 
 <section class="fv">
   <div class="fv-sky">
-    <svg viewBox="0 0 1200 640" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
         <linearGradient id="fvSky" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stop-color="#4E93C7"/>
@@ -388,9 +403,14 @@
     <p class="fv-eyebrow">babuuu. Autumn Feature</p>
     <h1 class="fv-title">お出かけ日和も、<br>おうち日和も。</h1>
     <p class="fv-lead">秋は、晴れの日もあれば雨の日もある。どちらの日も、お子さんとの時間がもっと楽しくなるように。</p>
-    <a class="fv-scroll" href="#shopping">アイテムを見る
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
-    </a>
+    <div class="fv-actions">
+      <a class="fv-scroll" href="#shopping">アイテムを見る
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+      </a>
+      <a class="fv-scroll is-play" href="#play">お子さまと一緒にゲームをしてみる？
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -608,9 +628,15 @@
   </div>
   <div class="cta-buttons">
     <a class="cta-btn-main" href="#shopping">紹介したアイテムを見る</a>
-    <a class="cta-btn-sub" href="https://item.rakuten.co.jp/babuuu/c/0000000002" target="_blank" rel="noopener">ベビーカー一覧を見る</a>
-    <a class="cta-btn-sub" href="https://item.rakuten.co.jp/babuuu/c/0000000003" target="_blank" rel="noopener">チャイルドシート一覧を見る</a>
+    <a class="cta-btn-sub" href="https://search.rakuten.co.jp/search/mall/%E3%83%99%E3%83%93%E3%83%BC%E3%82%AB%E3%83%BC/?l-id=shoptop_shopmenu_search_bar&sid=422856" target="_blank" rel="noopener">ベビーカー一覧を見る</a>
+    <a class="cta-btn-sub" href="https://search.rakuten.co.jp/search/mall/%E3%83%81%E3%83%A3%E3%82%A4%E3%83%AB%E3%83%89%E3%82%B7%E3%83%BC%E3%83%88/?sid=422856" target="_blank" rel="noopener">チャイルドシート一覧を見る</a>
   </div>
+</section>
+
+<section class="banner-strip">
+  <a href="https://www.rakuten.ne.jp/gold/babuuu/c/babykids/nyuen/" target="_blank" rel="noopener">
+    <img src="https://tshop.r10s.jp/babuuu/cabinet/sitedesign/index/top_slide/nyuensp_210.jpg" alt="そろそろ考えようかな？入園入学準備" loading="lazy">
+  </a>
 </section>
 
 </div>
