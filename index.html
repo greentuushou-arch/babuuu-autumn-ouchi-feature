@@ -7,12 +7,19 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Jost:wght@500;600&display=swap');
 
+  :root{
+    --ink:#181613;
+    --paper:#FFFFFF;
+    --blue:#1E9FD6;
+    --yellow:#FFC300;
+    --pink:#FF4C86;
+  }
   *{ box-sizing:border-box; }
   html{ scroll-behavior:smooth; }
   body{
     margin:0;
-    background:#FBF3E7;
-    color:#2E2A22;
+    background:var(--paper);
+    color:var(--ink);
     font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;
   }
   img{ max-width:100%; display:block; }
@@ -32,7 +39,7 @@
     font-size:14px;
     font-weight:700;
     letter-spacing:.08em;
-    color:#C98B4A;
+    color:var(--pink);
   }
   .section-head h2{
     margin:0;
@@ -45,7 +52,7 @@
     margin:0;
     font-size:15.5px;
     line-height:1.9;
-    color:#4A4335;
+    color:var(--ink);
     max-width:34ch;
     margin-inline:auto;
   }
@@ -120,14 +127,14 @@
   .fv-scroll svg{ width:11px; height:11px; }
 
   /* ---------- Outing ---------- */
-  .outing{ background:#FBF3E7; }
-  .product-group{ max-width:920px; margin:0 auto 48px; }
+  .outing{ background:var(--paper); }
+  .product-group{ max-width:960px; margin:0 auto 48px; }
   .product-group:last-child{ margin-bottom:0; }
   .group-label{
     margin:0 0 16px;
-    font-weight:700;
-    font-size:14px;
-    color:#9C6530;
+    font-weight:900;
+    font-size:15px;
+    color:var(--ink);
     display:flex;
     align-items:center;
     gap:10px;
@@ -135,45 +142,52 @@
   .group-label::after{
     content:'';
     flex:1;
-    height:1px;
-    background:#E4D3B8;
+    height:3px;
+    background:var(--ink);
   }
   .product-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
+    grid-template-columns:repeat(auto-fill, minmax(170px, 1fr));
+    gap:18px;
   }
   .product-card{
     display:flex;
     flex-direction:column;
-    background:#FFFFFF;
-    border-radius:18px;
+    background:var(--paper);
+    border:2.5px solid var(--ink);
+    border-radius:16px;
     overflow:hidden;
     text-decoration:none;
     color:inherit;
-    box-shadow:0 14px 28px -20px rgba(60,40,10,.35);
   }
   .product-photo{
     aspect-ratio:1/1;
-    background:#F6EEE0;
+    background:#FFFFFF;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:14px;
+    padding:12px;
+    border-bottom:2.5px solid var(--ink);
   }
   .product-photo img{ width:100%; height:100%; object-fit:contain; }
   .product-body{
-    padding:16px 18px 20px;
+    padding:14px 16px 18px;
     display:flex;
     flex-direction:column;
-    gap:10px;
+    gap:8px;
     flex:1;
   }
   .product-name{
     margin:0;
     font-weight:700;
-    font-size:15.5px;
+    font-size:14.5px;
     line-height:1.5;
+  }
+  .product-desc{
+    margin:0;
+    font-size:12.5px;
+    line-height:1.65;
+    color:var(--ink);
   }
   .product-tags{
     margin:0;
@@ -181,28 +195,39 @@
     list-style:none;
     display:flex;
     flex-wrap:wrap;
-    gap:6px;
+    gap:5px;
   }
   .product-tags li{
-    font-size:11.5px;
-    font-weight:500;
-    color:#9C6530;
-    background:#FBF0DE;
+    font-size:10.5px;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--yellow);
     border-radius:999px;
-    padding:3px 10px;
+    padding:3px 9px;
   }
+  .product-tags li:nth-child(2){ background:var(--pink); color:#fff; }
+  .product-tags li:nth-child(3){ background:var(--blue); color:#fff; }
   .product-meta{
     margin-top:auto;
     display:flex;
-    align-items:baseline;
+    align-items:center;
     justify-content:space-between;
-    gap:8px;
-    padding-top:6px;
+    gap:6px;
+    padding-top:8px;
+    border-top:2px solid var(--ink);
   }
-  .product-price{ font-weight:700; font-size:17px; }
-  .product-price .num{ font-size:19px; }
-  .product-reviews{ font-size:11.5px; color:#7A6C57; }
-  .product-reviews .num{ font-weight:600; color:#4A4335; }
+  .product-price{ font-weight:700; font-size:16px; }
+  .product-price .num{ font-size:17px; }
+  .product-reviews{
+    font-size:10.5px;
+    font-weight:700;
+    color:#fff;
+    background:var(--ink);
+    border-radius:999px;
+    padding:3px 9px;
+    white-space:nowrap;
+  }
+  .product-reviews .num{ font-family:'Jost',sans-serif; }
 
   /* ---------- Transition ---------- */
   .transition{
@@ -234,14 +259,18 @@
   }
   .transition-text{
     position:absolute;
-    left:0; right:0; bottom:8%;
+    left:0; right:0; top:9%;
     margin:0;
     text-align:center;
     font-family:'Zen Maru Gothic',sans-serif;
     font-weight:900;
     font-size:clamp(22px,4.5vw,32px);
     color:#FFFFFF;
+    opacity:0;
+    transition:opacity 1.1s ease;
   }
+  .transition.is-active .transition-text{ opacity:1; }
+  @media (prefers-reduced-motion:reduce){ .transition-text{ transition:none; } }
 
   /* ---------- Play ---------- */
   .play{ background:#1E9FD6; }
@@ -264,7 +293,8 @@
   }
 
   /* ---------- Closing CTA ---------- */
-  .cta-close{ background:#FBF3E7; }
+  .cta-close{ background:var(--yellow); }
+  .cta-close .eyebrow{ color:var(--ink); }
   .cta-buttons{
     display:flex;
     flex-direction:column;
@@ -277,30 +307,28 @@
     width:100%;
     text-align:center;
     text-decoration:none;
-    background:#FFB648;
-    color:#000000;
+    background:var(--ink);
+    color:#FFFFFF;
     font-weight:700;
     font-size:16px;
     padding:15px 20px;
     border-radius:999px;
-    box-shadow:0 12px 22px -12px rgba(255,182,72,.8);
   }
   .cta-btn-sub{
     width:100%;
     text-align:center;
     text-decoration:none;
     background:#FFFFFF;
-    color:#2E2A22;
+    color:var(--ink);
     font-weight:700;
     font-size:14.5px;
     padding:13px 20px;
     border-radius:999px;
-    border:1.5px solid #E4D3B8;
+    border:2px solid var(--ink);
   }
 
   @media (max-width:600px){
     section{ padding:48px 16px; }
-    .product-grid{ grid-template-columns:1fr; }
     .product-group{ margin-bottom:36px; }
   }
 </style>
@@ -359,9 +387,8 @@
 
 <section class="outing" id="shopping">
   <div class="section-head">
-    <p class="eyebrow">OUTING / お出かけ編</p>
     <h2>秋の本命、見つけよう。</h2>
-    <p class="lead">通気性・防寒・軽さ。秋のおでかけに大事な視点で選んだ、口コミの多い人気アイテムです。</p>
+    <p class="lead">通気性・防寒・軽さ。秋のおでかけに大事な視点で選んだ、口コミの多い人気アイテムを10点集めました。</p>
   </div>
 
   <div class="product-group">
@@ -371,6 +398,7 @@
         <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4972990193689_s1.jpg" alt="コンビ アクビィプラス B型ベビーカー" loading="lazy"></div>
         <div class="product-body">
           <p class="product-name">コンビ アクビィプラス</p>
+          <p class="product-desc">軽さと使いやすさのバランスがよく、毎日の送り迎えに選ばれている定番モデル。</p>
           <ul class="product-tags"><li>軽量</li><li>サンシェード付き</li><li>丸洗いOK</li></ul>
           <div class="product-meta">
             <span class="product-price"><span class="num">35,200</span>円</span>
@@ -378,14 +406,39 @@
           </div>
         </div>
       </a>
+      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00330/" target="_blank" rel="noopener">
+        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4930969415750_s1.jpg" alt="カトージ TOBERU トベル B型ベビーカー" loading="lazy"></div>
+        <div class="product-body">
+          <p class="product-name">カトージ TOBERU トベル</p>
+          <p class="product-desc">リュックのように背負えるコンパクト設計。旅行や帰省のお供に。</p>
+          <ul class="product-tags"><li>軽量・コンパクト</li><li>キャビンサイズ</li><li>バックパック付き</li></ul>
+          <div class="product-meta">
+            <span class="product-price"><span class="num">16,500</span>円</span>
+            <span class="product-reviews">口コミ<span class="num">3</span>件</span>
+          </div>
+        </div>
+      </a>
       <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00208/" target="_blank" rel="noopener">
         <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4969220008042_s1.jpg" alt="アップリカ マジカルエアー B型ベビーカー" loading="lazy"></div>
         <div class="product-body">
           <p class="product-name">アップリカ マジカルエアー</p>
+          <p class="product-desc">ダブルタイヤで段差もスムーズ。秋の公園や砂利道でも安心の乗り心地。</p>
           <ul class="product-tags"><li>段差らくらく</li><li>振動吸収設計</li><li>メッシュで洗える</li></ul>
           <div class="product-meta">
             <span class="product-price"><span class="num">19,190</span>円</span>
             <span class="product-reviews">口コミ<span class="num">96</span>件</span>
+          </div>
+        </div>
+      </a>
+      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00428/" target="_blank" rel="noopener">
+        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4969220010786_s1.jpg" alt="アップリカ ヴィット B型ベビーカー" loading="lazy"></div>
+        <div class="product-body">
+          <p class="product-name">アップリカ ヴィット</p>
+          <p class="product-desc">大径タイヤと足のせサポートで、長いお出かけも足元まで快適に。</p>
+          <ul class="product-tags"><li>25年モデル</li><li>大径タイヤ</li><li>足のせサポート</li></ul>
+          <div class="product-meta">
+            <span class="product-price"><span class="num">29,700</span>円〜</span>
+            <span class="product-reviews">口コミ<span class="num">2</span>件</span>
           </div>
         </div>
       </a>
@@ -399,6 +452,7 @@
         <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4972990197984_s1.jpg" alt="コンビ ジョイトリップ アドバンス プラス チャイルドシート" loading="lazy"></div>
         <div class="product-body">
           <p class="product-name">コンビ ジョイトリップ アドバンス プラス</p>
+          <p class="product-desc">口コミ数トップクラス。長く使えて軽いから、家族みんなが扱いやすい。</p>
           <ul class="product-tags"><li>生後15か月〜12歳頃</li><li>ISOFIX対応</li><li>軽量</li></ul>
           <div class="product-meta">
             <span class="product-price"><span class="num">38,600</span>円〜</span>
@@ -410,10 +464,59 @@
         <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4972990193641_s1.jpg" alt="コンビ クルムーヴ ロング チャイルドシート" loading="lazy"></div>
         <div class="product-body">
           <p class="product-name">コンビ クルムーヴ ロング</p>
+          <p class="product-desc">片手でクルッと回転。雨の日の乗せ降ろしもぐっとラクになる。</p>
           <ul class="product-tags"><li>回転式でラク乗せ</li><li>着用義務期間を丸ごとカバー</li></ul>
           <div class="product-meta">
             <span class="product-price"><span class="num">54,900</span>円</span>
             <span class="product-reviews">口コミ<span class="num">172</span>件</span>
+          </div>
+        </div>
+      </a>
+      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00028/" target="_blank" rel="noopener">
+        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4972990196710_s1.jpg" alt="コンビ クルムーヴ コンパクト チャイルドシート" loading="lazy"></div>
+        <div class="product-body">
+          <p class="product-name">コンビ クルムーヴ コンパクト</p>
+          <p class="product-desc">コンパクトサイズながら回転式。新生児期から長く付き合える一台。</p>
+          <ul class="product-tags"><li>新生児〜4歳</li><li>小型回転式</li><li>メッシュで洗える</li></ul>
+          <div class="product-meta">
+            <span class="product-price"><span class="num">60,800</span>円</span>
+            <span class="product-reviews">口コミ<span class="num">171</span>件</span>
+          </div>
+        </div>
+      </a>
+      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00133/" target="_blank" rel="noopener">
+        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4972990149921_s1.jpg" alt="コンビ ジョイトリップアドバンス ISOFIX チャイルドシート" loading="lazy"></div>
+        <div class="product-body">
+          <p class="product-name">コンビ ジョイトリップアドバンス ISOFIX</p>
+          <p class="product-desc">3Dメッシュ素材で通気性がよく、秋のロングドライブも快適。</p>
+          <ul class="product-tags"><li>3Dメッシュ</li><li>すっきり収納</li><li>出産祝いにも</li></ul>
+          <div class="product-meta">
+            <span class="product-price"><span class="num">37,899</span>円</span>
+            <span class="product-reviews">口コミ<span class="num">107</span>件</span>
+          </div>
+        </div>
+      </a>
+      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00209/" target="_blank" rel="noopener">
+        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4969220011820_s1.jpg" alt="アップリカ クルリラ エックスプラス チャイルドシート" loading="lazy"></div>
+        <div class="product-body">
+          <p class="product-name">アップリカ クルリラ エックスプラス</p>
+          <p class="product-desc">4層構造のクッションでしっかり守る。新生児からの安心設計。</p>
+          <ul class="product-tags"><li>新生児から</li><li>4層構造</li><li>ISOFIX回転式</li></ul>
+          <div class="product-meta">
+            <span class="product-price"><span class="num">79,750</span>円</span>
+            <span class="product-reviews">口コミ<span class="num">78</span>件</span>
+          </div>
+        </div>
+      </a>
+      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00256/" target="_blank" rel="noopener">
+        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4969220011615_s1.jpg" alt="アップリカ フォームフィット ネクスト チャイルドシート" loading="lazy"></div>
+        <div class="product-body">
+          <p class="product-name">アップリカ フォームフィット ネクスト</p>
+          <p class="product-desc">成長に合わせて縦横調整できる、長く使えるロングユースモデル。</p>
+          <ul class="product-tags"><li>ロングユース</li><li>縦横調整可能</li><li>5点式ベルト</li></ul>
+          <div class="product-meta">
+            <span class="product-price"><span class="num">49,500</span>円</span>
+            <span class="product-reviews">口コミ<span class="num">69</span>件</span>
           </div>
         </div>
       </a>

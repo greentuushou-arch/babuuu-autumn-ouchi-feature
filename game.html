@@ -460,6 +460,12 @@
 
   <div class="progress-dots" id="progressDots" aria-hidden="true"></div>
 
+  <div class="quiz" id="quizPanel" hidden>
+    <p class="quiz-q">これは なにかな？</p>
+    <div class="choices" id="choices"></div>
+    <p class="quiz-feedback" id="quizFeedback" aria-live="polite"></p>
+  </div>
+
   <div class="window-wrap">
     <div class="sun-gauge" id="sunGauge" aria-hidden="true"></div>
     <div class="frame">
@@ -488,12 +494,6 @@
 
   <div class="controls" id="wipingControls">
     <button class="ghost-btn" id="autoWipeBtn" type="button">ゆびで なぞれないときは ここをタップ</button>
-  </div>
-
-  <div class="quiz" id="quizPanel" hidden>
-    <p class="quiz-q">これは なにかな？</p>
-    <div class="choices" id="choices"></div>
-    <p class="quiz-feedback" id="quizFeedback" aria-live="polite"></p>
   </div>
 
   <div class="round-clear" id="roundClear" hidden>
@@ -597,7 +597,9 @@
   var COLS = 18, ROWS = 22;
   var grid = new Array(COLS * ROWS).fill(false);
   var roundIndex = 0;
-  var phase = 'wiping';
+  var wipeLocked = false;
+  var roundSettled = false;
+  var gameDone = false;
   var couponOutcome = null;
   var isDown = false;
   var lastX = null, lastY = null;
@@ -694,7 +696,15 @@
   function updateProgress(){
     var p = Math.min(1, currentPercent());
     sunGauge.style.setProperty('--p', p.toFixed(3));
-    if(phase === 'wiping' && p >= 0.62) revealCurrentRound();
+    if(!wipeLocked && p >= 0.62) lockWipe();
+  }
+
+  function lockWipe(){
+    wipeLocked = true;
+    canvas.style.opacity = '0';
+    hint.classList.add('hidden');
+    wipingControls.hidden = true;
+    if(ROUNDS[roundIndex].type === 'coupon') couponReveal.hidden = false;
   }
 
   function pointFromEvent(e){
@@ -713,7 +723,7 @@
     }
   }
   function onDown(e){
-    if(phase !== 'wiping') return;
+    if(wipeLocked) return;
     isDown = true;
     hint.classList.add('hidden');
     var p = pointFromEvent(e);
@@ -723,7 +733,7 @@
     e.preventDefault();
   }
   function onMove(e){
-    if(!isDown || phase !== 'wiping') return;
+    if(!isDown || wipeLocked) return;
     var p = pointFromEvent(e);
     wipeLine(lastX, lastY, p.x, p.y);
     lastX = p.x; lastY = p.y;
@@ -739,7 +749,7 @@
   window.addEventListener('touchend', onUp);
 
   autoWipeBtn.addEventListener('click', function(){
-    if(phase !== 'wiping') return;
+    if(wipeLocked) return;
     hint.classList.add('hidden');
     for(var i = 0; i < 5; i++){
       var rx = (0.15 + Math.random() * 0.7) * canvas.width;
@@ -795,12 +805,17 @@
   }
 
   function onChoose(choiceId, btn){
+    if(roundSettled) return;
     var round = ROUNDS[roundIndex];
     if(choiceId === round.id){
+      roundSettled = true;
+      wipeLocked = true;
+      canvas.style.opacity = '0';
+      hint.classList.add('hidden');
+      wipingControls.hidden = true;
       quizFeedback.textContent = 'せいかい！';
       quizFeedback.className = 'quiz-feedback good';
       spawnPetals(10);
-      phase = 'correct';
       setTimeout(function(){
         quizPanel.hidden = true;
         roundClearLabel.textContent = 'やったね、' + round.label + ' みつけた！';
@@ -833,36 +848,20 @@
     spawnPetals(couponOutcome === 'hit' ? 16 : 8);
     if(couponOutcome === 'hit') rainbowLayer.classList.add('show');
     setTimeout(function(){
-      phase = 'done';
+      gameDone = true;
       roundIndex = ROUNDS.length;
       renderDots();
       showCouponResult(couponOutcome);
     }, 650);
   });
 
-  function revealCurrentRound(){
-    var round = ROUNDS[roundIndex];
-    canvas.style.opacity = '0';
-    hint.classList.add('hidden');
-    wipingControls.hidden = true;
-    if(round.type === 'coupon'){
-      phase = 'coupon-ready';
-      couponReveal.hidden = false;
-    } else {
-      phase = 'guessing';
-      renderChoices(round);
-      quizPanel.hidden = false;
-    }
-  }
-
   function startRound(i){
     roundIndex = i;
-    phase = 'wiping';
+    wipeLocked = false;
+    roundSettled = false;
     grid.fill(false);
-    canvas.style.opacity = '1';
     rainbowLayer.classList.remove('show');
     petalsWrap.innerHTML = '';
-    quizPanel.hidden = true;
     roundClear.hidden = true;
     couponReveal.hidden = true;
     resultPanel.hidden = true;
@@ -871,8 +870,23 @@
     if(ROUNDS[i].type === 'coupon') couponOutcome = Math.random() < 0.65 ? 'hit' : 'miss';
     renderDots();
     renderScene(ROUNDS[i]);
+    if(ROUNDS[i].type === 'quiz'){
+      renderChoices(ROUNDS[i]);
+      quizPanel.hidden = false;
+    } else {
+      quizPanel.hidden = true;
+    }
     sizeCanvas();
+
+    // paint the fresh fog while hidden, then show it instantly (no fade)
+    // so the new round's answer never flashes through mid-transition.
+    canvas.style.transition = 'none';
+    canvas.style.opacity = '0';
     paintFog();
+    void canvas.offsetHeight;
+    canvas.style.opacity = '1';
+    requestAnimationFrame(function(){ canvas.style.transition = 'opacity .5s ease'; });
+
     sunGauge.style.setProperty('--p', '0');
   }
 
@@ -880,7 +894,7 @@
   resetBtn.addEventListener('click', function(){ startRound(0); });
 
   window.addEventListener('resize', function(){
-    if(phase !== 'wiping') return;
+    if(wipeLocked) return;
     sizeCanvas();
     paintFog();
   });
@@ -888,17 +902,14 @@
   function start(data){
     var initial = (data && typeof data.roundIndex === 'number' && data.roundIndex < ROUNDS.length) ? data.roundIndex : 0;
     startRound(initial);
-    if(data && data.phase === 'guessing' && ROUNDS[initial].type === 'quiz'){
-      grid.fill(true);
-      revealCurrentRound();
-    } else if(data && data.phase === 'done'){
-      phase = 'done';
+    if(data && data.done){
+      gameDone = true;
       roundIndex = ROUNDS.length;
       renderDots();
       showCouponResult(data.couponOutcome === 'miss' ? 'miss' : 'hit');
     }
     if(window.claude && window.claude.hot && window.claude.hot.snapshot){
-      window.claude.hot.snapshot(function(){ return { roundIndex: roundIndex, phase: phase, couponOutcome: couponOutcome }; });
+      window.claude.hot.snapshot(function(){ return { roundIndex: roundIndex, done: gameDone, couponOutcome: couponOutcome }; });
     }
   }
 
