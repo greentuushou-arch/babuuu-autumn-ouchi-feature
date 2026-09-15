@@ -137,6 +137,11 @@
     border:2.5px solid var(--ink);
     border-radius:16px;
     overflow:hidden;
+  }
+  .product-link{
+    display:flex;
+    flex-direction:column;
+    flex:1;
     text-decoration:none;
     color:inherit;
   }
@@ -151,7 +156,7 @@
   }
   .product-photo img{ width:100%; height:100%; object-fit:contain; }
   .product-body{
-    padding:14px 16px 18px;
+    padding:14px 16px 10px;
     display:flex;
     flex-direction:column;
     gap:8px;
@@ -188,12 +193,11 @@
   .product-tags li:nth-child(2){ background:var(--pink); color:#fff; }
   .product-tags li:nth-child(3){ background:var(--blue); color:#fff; }
   .product-meta{
-    margin-top:auto;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:6px;
-    padding-top:8px;
+    padding:8px 16px 14px;
     border-top:2px solid var(--ink);
   }
   .product-price{ font-weight:700; font-size:16px; }
@@ -206,7 +210,10 @@
     border-radius:999px;
     padding:3px 9px;
     white-space:nowrap;
+    text-decoration:none;
+    cursor:pointer;
   }
+  .product-reviews:hover{ background:var(--pink); }
   .product-reviews .num{ font-family:'Jost',sans-serif; }
 
   /* ---------- Transition ---------- */
@@ -316,6 +323,7 @@
   @media (max-width:600px){
     section{ padding:48px 16px; }
     .product-group{ margin-bottom:36px; }
+    .product-grid{ grid-template-columns:1fr; }
   }
 </style>
 </head>
@@ -349,228 +357,264 @@
   <div class="product-group">
     <p class="group-label">ベビーカー</p>
     <div class="product-grid">
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00027/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4972990193689_s1.jpg" alt="コンビ アクビィプラス B型ベビーカー" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">コンビ アクビィプラス</p>
-          <p class="product-desc">軽さと使いやすさのバランスがよく、毎日の送り迎えに選ばれている定番モデル。</p>
-          <ul class="product-tags"><li>軽量</li><li>サンシェード付き</li><li>丸洗いOK</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">35,200</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">395</span>件</span>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00027/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4972990193689_s1.jpg" alt="コンビ アクビィプラス B型ベビーカー" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">コンビ アクビィプラス</p>
+            <p class="product-desc">軽さと使いやすさのバランスがよく、毎日の送り迎えに選ばれている定番モデル。</p>
+            <ul class="product-tags"><li>軽量</li><li>サンシェード付き</li><li>丸洗いOK</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">35,200</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000008/1.1/" target="_blank" rel="noopener">口コミ<span class="num">395</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00330/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4930969415750_s1.jpg" alt="カトージ TOBERU トベル B型ベビーカー" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">カトージ TOBERU トベル</p>
-          <p class="product-desc">リュックのように背負えるコンパクト設計。旅行や帰省のお供に。</p>
-          <ul class="product-tags"><li>軽量・コンパクト</li><li>キャビンサイズ</li><li>バックパック付き</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">16,500</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">3</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00330/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4930969415750_s1.jpg" alt="カトージ TOBERU トベル B型ベビーカー" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">カトージ TOBERU トベル</p>
+            <p class="product-desc">リュックのように背負えるコンパクト設計。旅行や帰省のお供に。</p>
+            <ul class="product-tags"><li>軽量・コンパクト</li><li>キャビンサイズ</li><li>バックパック付き</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">16,500</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000941/1.1/" target="_blank" rel="noopener">口コミ<span class="num">3</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00208/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4969220008042_s1.jpg" alt="アップリカ マジカルエアー B型ベビーカー" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">アップリカ マジカルエアー</p>
-          <p class="product-desc">ダブルタイヤで段差もスムーズ。秋の公園や砂利道でも安心の乗り心地。</p>
-          <ul class="product-tags"><li>段差らくらく</li><li>振動吸収設計</li><li>メッシュで洗える</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">19,190</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">96</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00208/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4969220008042_s1.jpg" alt="アップリカ マジカルエアー B型ベビーカー" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">アップリカ マジカルエアー</p>
+            <p class="product-desc">ダブルタイヤで段差もスムーズ。秋の公園や砂利道でも安心の乗り心地。</p>
+            <ul class="product-tags"><li>段差らくらく</li><li>振動吸収設計</li><li>メッシュで洗える</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">19,190</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000719/1.1/" target="_blank" rel="noopener">口コミ<span class="num">96</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00312/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4969220011479_s1.jpg" alt="アップリカ ヴィットAB B型ベビーカー" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">アップリカ ヴィットAB</p>
-          <p class="product-desc">サッとたたんでスッと進める。大径タイヤで秋の砂利道も安心。</p>
-          <ul class="product-tags"><li>コンパクト</li><li>大径タイヤ</li><li>足のせサポート</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">32,890</span>円〜</span>
-            <span class="product-reviews">口コミ<span class="num">349</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00312/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4969220011479_s1.jpg" alt="アップリカ ヴィットAB B型ベビーカー" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">アップリカ ヴィットAB</p>
+            <p class="product-desc">サッとたたんでスッと進める。大径タイヤで秋の砂利道も安心。</p>
+            <ul class="product-tags"><li>コンパクト</li><li>大径タイヤ</li><li>足のせサポート</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">32,890</span>円〜</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000896/1.1/" target="_blank" rel="noopener">口コミ<span class="num">349</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00021/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4969220011172_s1.jpg" alt="アップリカ ルーチェフリー AC A型ベビーカー" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">アップリカ ルーチェフリー AC</p>
-          <p class="product-desc">新生児から3歳頃まで長く使える、両対面式のロングユースモデル。</p>
-          <ul class="product-tags"><li>両対面式</li><li>ロングユース</li><li>軽量</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">76,890</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">539</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00021/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4969220011172_s1.jpg" alt="アップリカ ルーチェフリー AC A型ベビーカー" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">アップリカ ルーチェフリー AC</p>
+            <p class="product-desc">新生児から3歳頃まで長く使える、両対面式のロングユースモデル。</p>
+            <ul class="product-tags"><li>両対面式</li><li>ロングユース</li><li>軽量</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">76,890</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000018/1.1/" target="_blank" rel="noopener">口コミ<span class="num">539</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00353/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4972990199568_s1.jpg" alt="コンビ オートNセカンド B型ベビーカー" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">コンビ オートNセカンド</p>
-          <p class="product-desc">オートクローズ＆オートスタンドで、片手でもたためて自立する。</p>
-          <ul class="product-tags"><li>フロントガード標準</li><li>片手でたためる</li><li>長く使える</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">29,900</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">99</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00353/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4972990199568_s1.jpg" alt="コンビ オートNセカンド B型ベビーカー" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">コンビ オートNセカンド</p>
+            <p class="product-desc">オートクローズ＆オートスタンドで、片手でもたためて自立する。</p>
+            <ul class="product-tags"><li>フロントガード標準</li><li>片手でたためる</li><li>長く使える</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">29,900</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000975/1.1/" target="_blank" rel="noopener">口コミ<span class="num">99</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00320/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4930969414074_s1.jpg" alt="Joie パクトプロ A型ベビーカー" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">Joie パクトプロ</p>
-          <p class="product-desc">4歳頃まで使える軽量＆コンパクト設計。専用レインカバー付きで雨の日も安心。</p>
-          <ul class="product-tags"><li>軽量コンパクト</li><li>レインカバー付き</li><li>収納バッグ付き</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">24,800</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">21</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00320/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4930969414074_s1.jpg" alt="Joie パクトプロ A型ベビーカー" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">Joie パクトプロ</p>
+            <p class="product-desc">4歳頃まで使える軽量＆コンパクト設計。専用レインカバー付きで雨の日も安心。</p>
+            <ul class="product-tags"><li>軽量コンパクト</li><li>レインカバー付き</li><li>収納バッグ付き</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">24,800</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000944/1.1/" target="_blank" rel="noopener">口コミ<span class="num">21</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00352/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4972990197816_s1.jpg" alt="コンビ オートNファーストツー A型ベビーカー" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">コンビ オートNファーストツー</p>
-          <p class="product-desc">旅行も街歩きもこれ1台。新生児から使えるオートクローズ設計。</p>
-          <ul class="product-tags"><li>新生児から</li><li>両対面式</li><li>エッグショック</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">64,900</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">8</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00352/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4972990197816_s1.jpg" alt="コンビ オートNファーストツー A型ベビーカー" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">コンビ オートNファーストツー</p>
+            <p class="product-desc">旅行も街歩きもこれ1台。新生児から使えるオートクローズ設計。</p>
+            <ul class="product-tags"><li>新生児から</li><li>両対面式</li><li>エッグショック</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">64,900</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000974/1.1/" target="_blank" rel="noopener">口コミ<span class="num">8</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00259/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4969220009742_s1.jpg" alt="アップリカ カルーンエアーAD A型ベビーカー" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">アップリカ カルーンエアーAD</p>
-          <p class="product-desc">たいせつなものだけ詰め込んだ、超軽量3.9kgの軽やかな乗り心地。</p>
-          <ul class="product-tags"><li>超軽量3.9kg</li><li>振動吸収設計</li><li>ビッグバスケット</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">29,280</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">6</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00259/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4969220009742_s1.jpg" alt="アップリカ カルーンエアーAD A型ベビーカー" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">アップリカ カルーンエアーAD</p>
+            <p class="product-desc">たいせつなものだけ詰め込んだ、超軽量3.9kgの軽やかな乗り心地。</p>
+            <ul class="product-tags"><li>超軽量3.9kg</li><li>振動吸収設計</li><li>ビッグバスケット</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">29,280</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000829/1.1/" target="_blank" rel="noopener">口コミ<span class="num">6</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00323/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/3220660006441_s1.jpg" alt="マキシコシ レオナ2 ベビーカー" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">マキシコシ レオナ2</p>
-          <p class="product-desc">4歳までずっと押しやすい。トラベルシステムにも対応するコンパクト設計。</p>
-          <ul class="product-tags"><li>トラベルシステム対応</li><li>コンパクト</li><li>EN基準適合</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">55,000</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">2</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00323/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/3220660006441_s1.jpg" alt="マキシコシ レオナ2 ベビーカー" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">マキシコシ レオナ2</p>
+            <p class="product-desc">4歳までずっと押しやすい。トラベルシステムにも対応するコンパクト設計。</p>
+            <ul class="product-tags"><li>トラベルシステム対応</li><li>コンパクト</li><li>EN基準適合</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">55,000</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000907/1.1/" target="_blank" rel="noopener">口コミ<span class="num">2</span>件</a>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 
   <div class="product-group">
     <p class="group-label">チャイルドシート</p>
     <div class="product-grid">
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00029/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4972990197984_s1.jpg" alt="コンビ ジョイトリップ アドバンス プラス チャイルドシート" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">コンビ ジョイトリップ アドバンス プラス</p>
-          <p class="product-desc">口コミ数トップクラス。長く使えて軽いから、家族みんなが扱いやすい。</p>
-          <ul class="product-tags"><li>生後15か月〜12歳頃</li><li>ISOFIX対応</li><li>軽量</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">38,600</span>円〜</span>
-            <span class="product-reviews">口コミ<span class="num">471</span>件</span>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00029/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4972990197984_s1.jpg" alt="コンビ ジョイトリップ アドバンス プラス チャイルドシート" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">コンビ ジョイトリップ アドバンス プラス</p>
+            <p class="product-desc">口コミ数トップクラス。長く使えて軽いから、家族みんなが扱いやすい。</p>
+            <ul class="product-tags"><li>生後15か月〜12歳頃</li><li>ISOFIX対応</li><li>軽量</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">38,600</span>円〜</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000045/1.1/" target="_blank" rel="noopener">口コミ<span class="num">471</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00210/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4972990193641_s1.jpg" alt="コンビ クルムーヴ ロング チャイルドシート" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">コンビ クルムーヴ ロング</p>
-          <p class="product-desc">片手でクルッと回転。雨の日の乗せ降ろしもぐっとラクになる。</p>
-          <ul class="product-tags"><li>回転式でラク乗せ</li><li>着用義務期間を丸ごとカバー</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">54,900</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">172</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00210/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0915kd/default/s1/4972990193641_s1.jpg" alt="コンビ クルムーヴ ロング チャイルドシート" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">コンビ クルムーヴ ロング</p>
+            <p class="product-desc">片手でクルッと回転。雨の日の乗せ降ろしもぐっとラクになる。</p>
+            <ul class="product-tags"><li>回転式でラク乗せ</li><li>着用義務期間を丸ごとカバー</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">54,900</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000722/1.1/" target="_blank" rel="noopener">口コミ<span class="num">172</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00028/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4972990196710_s1.jpg" alt="コンビ クルムーヴ コンパクト チャイルドシート" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">コンビ クルムーヴ コンパクト</p>
-          <p class="product-desc">コンパクトサイズながら回転式。新生児期から長く付き合える一台。</p>
-          <ul class="product-tags"><li>新生児〜4歳</li><li>小型回転式</li><li>メッシュで洗える</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">60,800</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">171</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00028/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4972990196710_s1.jpg" alt="コンビ クルムーヴ コンパクト チャイルドシート" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">コンビ クルムーヴ コンパクト</p>
+            <p class="product-desc">コンパクトサイズながら回転式。新生児期から長く付き合える一台。</p>
+            <ul class="product-tags"><li>新生児〜4歳</li><li>小型回転式</li><li>メッシュで洗える</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">60,800</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000044/1.1/" target="_blank" rel="noopener">口コミ<span class="num">171</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00133/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4972990149921_s1.jpg" alt="コンビ ジョイトリップアドバンス ISOFIX チャイルドシート" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">コンビ ジョイトリップアドバンス ISOFIX</p>
-          <p class="product-desc">3Dメッシュ素材で通気性がよく、秋のロングドライブも快適。</p>
-          <ul class="product-tags"><li>3Dメッシュ</li><li>すっきり収納</li><li>出産祝いにも</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">37,899</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">107</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00133/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4972990149921_s1.jpg" alt="コンビ ジョイトリップアドバンス ISOFIX チャイルドシート" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">コンビ ジョイトリップアドバンス ISOFIX</p>
+            <p class="product-desc">3Dメッシュ素材で通気性がよく、秋のロングドライブも快適。</p>
+            <ul class="product-tags"><li>3Dメッシュ</li><li>すっきり収納</li><li>出産祝いにも</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">37,899</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000607/1.1/" target="_blank" rel="noopener">口コミ<span class="num">107</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00209/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4969220011820_s1.jpg" alt="アップリカ クルリラ エックスプラス チャイルドシート" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">アップリカ クルリラ エックスプラス</p>
-          <p class="product-desc">4層構造のクッションでしっかり守る。新生児からの安心設計。</p>
-          <ul class="product-tags"><li>新生児から</li><li>4層構造</li><li>ISOFIX回転式</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">79,750</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">78</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00209/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4969220011820_s1.jpg" alt="アップリカ クルリラ エックスプラス チャイルドシート" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">アップリカ クルリラ エックスプラス</p>
+            <p class="product-desc">4層構造のクッションでしっかり守る。新生児からの安心設計。</p>
+            <ul class="product-tags"><li>新生児から</li><li>4層構造</li><li>ISOFIX回転式</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">79,750</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000720/1.1/" target="_blank" rel="noopener">口コミ<span class="num">78</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00256/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4969220011615_s1.jpg" alt="アップリカ フォームフィット ネクスト チャイルドシート" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">アップリカ フォームフィット ネクスト</p>
-          <p class="product-desc">成長に合わせて縦横調整できる、長く使えるロングユースモデル。</p>
-          <ul class="product-tags"><li>ロングユース</li><li>縦横調整可能</li><li>5点式ベルト</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">49,500</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">69</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00256/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4969220011615_s1.jpg" alt="アップリカ フォームフィット ネクスト チャイルドシート" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">アップリカ フォームフィット ネクスト</p>
+            <p class="product-desc">成長に合わせて縦横調整できる、長く使えるロングユースモデル。</p>
+            <ul class="product-tags"><li>ロングユース</li><li>縦横調整可能</li><li>5点式ベルト</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">49,500</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000804/1.1/" target="_blank" rel="noopener">口コミ<span class="num">69</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00076/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4972990186018_s1.jpg" alt="コンビ クルムーヴ エッグショック CA チャイルドシート" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">コンビ クルムーヴ エッグショック CA</p>
-          <p class="product-desc">クルッと回して、スッと乗せ降ろし。ラク乗せコンパクトチャイルドシート。</p>
-          <ul class="product-tags"><li>回転式</li><li>新生児〜4歳</li><li>メッシュで洗える</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">50,380</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">45</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00076/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4972990186018_s1.jpg" alt="コンビ クルムーヴ エッグショック CA チャイルドシート" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">コンビ クルムーヴ エッグショック CA</p>
+            <p class="product-desc">クルッと回して、スッと乗せ降ろし。ラク乗せコンパクトチャイルドシート。</p>
+            <ul class="product-tags"><li>回転式</li><li>新生児〜4歳</li><li>メッシュで洗える</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">50,380</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000558/1.1/" target="_blank" rel="noopener">口コミ<span class="num">45</span>件</a>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00328/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/bgoods-00328-cp_s1.jpg" alt="マキシコシ エメラルド360プロ チャイルドシート" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">マキシコシ エメラルド360プロ</p>
-          <p class="product-desc">世界初のスライド機能搭載。新生児から12歳まで、ずっと使えるロングユース。</p>
-          <ul class="product-tags"><li>新生児〜12歳</li><li>スライド機能</li><li>360度回転</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">79,200</span>円</span>
-            <span class="product-reviews">口コミ<span class="num">39</span>件</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00328/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/bgoods-00328-cp_s1.jpg" alt="マキシコシ エメラルド360プロ チャイルドシート" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">マキシコシ エメラルド360プロ</p>
+            <p class="product-desc">世界初のスライド機能搭載。新生児から12歳まで、ずっと使えるロングユース。</p>
+            <ul class="product-tags"><li>新生児〜12歳</li><li>スライド機能</li><li>360度回転</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">79,200</span>円</span>
+          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000919/1.1/" target="_blank" rel="noopener">口コミ<span class="num">39</span>件</a>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
@@ -652,84 +696,96 @@
   <div class="product-group">
     <p class="group-label">ベビーチェア</p>
     <div class="product-grid">
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00116/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4945680207317_s1.jpg" alt="リッチェル フィージー R ベビーチェア" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">リッチェル フィージー R</p>
-          <p class="product-desc">テーブル付きのローチェアで、お部屋でも食事に集中できる。</p>
-          <ul class="product-tags"><li>ベルト付き</li><li>床置きローチェア</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">9,680</span>円</span>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00116/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4945680207317_s1.jpg" alt="リッチェル フィージー R ベビーチェア" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">リッチェル フィージー R</p>
+            <p class="product-desc">テーブル付きのローチェアで、お部屋でも食事に集中できる。</p>
+            <ul class="product-tags"><li>ベルト付き</li><li>床置きローチェア</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">9,680</span>円</span>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00127/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4945680207348_s1.jpg" alt="リッチェル 2WAYごきげんチェア" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">リッチェル 2WAYごきげんチェア</p>
-          <p class="product-desc">座面高さを2段階調節。成長に合わせて長く使える。</p>
-          <ul class="product-tags"><li>2段階高さ調整</li><li>テーブル付き</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">6,930</span>円</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00127/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4945680207348_s1.jpg" alt="リッチェル 2WAYごきげんチェア" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">リッチェル 2WAYごきげんチェア</p>
+            <p class="product-desc">座面高さを2段階調節。成長に合わせて長く使える。</p>
+            <ul class="product-tags"><li>2段階高さ調整</li><li>テーブル付き</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">6,930</span>円</span>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 
   <div class="product-group">
     <p class="group-label">ベビーゲート</p>
     <div class="product-grid">
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00080/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4955303003561_s1.jpg" alt="日本育児 おくだけ とおせんぼ S ベビーゲート" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">日本育児 おくだけ とおせんぼ S</p>
-          <p class="product-desc">置くだけ設置で工具不要。賃貸のおうちでも気軽に使える。</p>
-          <ul class="product-tags"><li>置くだけ設置</li><li>突っ張り棒不要</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">9,870</span>円</span>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00080/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4955303003561_s1.jpg" alt="日本育児 おくだけ とおせんぼ S ベビーゲート" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">日本育児 おくだけ とおせんぼ S</p>
+            <p class="product-desc">置くだけ設置で工具不要。賃貸のおうちでも気軽に使える。</p>
+            <ul class="product-tags"><li>置くだけ設置</li><li>突っ張り棒不要</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">9,870</span>円</span>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00086/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4955303001710_s1.jpg" alt="日本育児 スマートゲイトII ベビーゲート" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">日本育児 スマートゲイトII</p>
-          <p class="product-desc">階段下やドア際にしっかりガード。ロック付きで安心。</p>
-          <ul class="product-tags"><li>幅調整可</li><li>ロック付き</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">11,990</span>円</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00086/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4955303001710_s1.jpg" alt="日本育児 スマートゲイトII ベビーゲート" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">日本育児 スマートゲイトII</p>
+            <p class="product-desc">階段下やドア際にしっかりガード。ロック付きで安心。</p>
+            <ul class="product-tags"><li>幅調整可</li><li>ロック付き</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">11,990</span>円</span>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 
   <div class="product-group">
     <p class="group-label">ベビー食器</p>
     <div class="product-grid">
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00215/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4972990183918_s1.jpg" alt="コンビ かさなるベビー食器セット" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">コンビ かさなるベビー食器セット</p>
-          <p class="product-desc">重ねて収納できる、おしゃれなギフト向け食器セット。</p>
-          <ul class="product-tags"><li>スタッキング収納</li><li>ギフトにも</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">2,200</span>円</span>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00215/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4972990183918_s1.jpg" alt="コンビ かさなるベビー食器セット" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">コンビ かさなるベビー食器セット</p>
+            <p class="product-desc">重ねて収納できる、おしゃれなギフト向け食器セット。</p>
+            <ul class="product-tags"><li>スタッキング収納</li><li>ギフトにも</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">2,200</span>円</span>
         </div>
-      </a>
-      <a class="product-card" href="https://item.rakuten.co.jp/babuuu/bgoods-00282/" target="_blank" rel="noopener">
-        <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4945680206105_s1.jpg" alt="リッチェル トライ マグセットプレミアム" loading="lazy"></div>
-        <div class="product-body">
-          <p class="product-name">リッチェル トライ マグセットプレミアム</p>
-          <p class="product-desc">ストロー飲み・コップ飲みの練習に。お手入れも簡単。</p>
-          <ul class="product-tags"><li>ストロー&コップ練習</li><li>お手入れ簡単</li></ul>
-          <div class="product-meta">
-            <span class="product-price"><span class="num">3,960</span>円</span>
+      </div>
+      <div class="product-card">
+        <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00282/" target="_blank" rel="noopener">
+          <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4945680206105_s1.jpg" alt="リッチェル トライ マグセットプレミアム" loading="lazy"></div>
+          <div class="product-body">
+            <p class="product-name">リッチェル トライ マグセットプレミアム</p>
+            <p class="product-desc">ストロー飲み・コップ飲みの練習に。お手入れも簡単。</p>
+            <ul class="product-tags"><li>ストロー&コップ練習</li><li>お手入れ簡単</li></ul>
           </div>
+        </a>
+        <div class="product-meta">
+          <span class="product-price"><span class="num">3,960</span>円</span>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
