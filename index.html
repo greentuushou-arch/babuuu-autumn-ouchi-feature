@@ -65,6 +65,10 @@
     font-size:clamp(26px,5.5vw,36px);
     text-wrap:balance;
   }
+  .section-head h2.title-lg{
+    font-size:clamp(30px,8vw,42px);
+    line-height:1.35;
+  }
   .section-head .lead{
     margin:0;
     font-size:15.5px;
@@ -175,6 +179,7 @@
     justify-content:center;
     padding:18px;
     border-bottom:2.5px solid var(--ink);
+    border-radius:17px 17px 0 0;
   }
   .product-photo img{ width:100%; height:100%; object-fit:contain; }
   .product-body{
@@ -225,15 +230,34 @@
   }
   .product-price{ font-weight:700; font-size:17px; }
   .product-price .num{ font-size:19px; }
-  .product-reviews{
+  .product-actions{
+    display:flex;
+    gap:8px;
+  }
+  .product-detail{
+    flex:1;
     display:block;
     text-align:center;
-    font-size:14.5px;
+    font-size:13px;
+    font-weight:900;
+    color:var(--ink);
+    background:var(--paper);
+    border:2px solid var(--ink);
+    border-radius:999px;
+    padding:10px 10px;
+    white-space:nowrap;
+    text-decoration:none;
+  }
+  .product-reviews{
+    flex:1.5;
+    display:block;
+    text-align:center;
+    font-size:13.5px;
     font-weight:900;
     color:#fff;
     background:var(--pink);
     border-radius:999px;
-    padding:11px 12px;
+    padding:10px 10px;
     white-space:nowrap;
     text-decoration:none;
     cursor:pointer;
@@ -247,11 +271,25 @@
       flex:0 0 280px;
       border-bottom:none;
       border-right:2.5px solid var(--ink);
+      border-radius:17px 0 0 17px;
     }
     .product-body{ padding:22px 26px; }
     .product-name{ font-size:18px; }
     .product-meta{ flex-direction:row; align-items:center; justify-content:space-between; }
+    .product-actions{ flex:0 0 auto; }
+    .product-detail{ flex:0 0 auto; padding:11px 20px; }
     .product-reviews{ flex:0 0 auto; padding:11px 24px; }
+  }
+
+  /* ---------- Reveal-in animation ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
   }
 
   /* ---------- Transition ---------- */
@@ -404,11 +442,11 @@
   <div class="product-group">
     <div class="section-head">
       <p class="eyebrow">BATH & TOILET TRAINING</p>
-      <h2>お風呂大好き！<br>トイレトレーニングも楽しく！</h2>
+      <h2 class="title-lg">お風呂大好き！<br>トイレトレーニングも<br>楽しく！</h2>
       <p class="lead">毎日のバスタイムとトイレトレーニングを、もっと楽しく快適に。人気アイテムをセレクトしました。</p>
     </div>
     <div class="product-grid">
-      <div class="product-card">
+      <div class="product-card reveal">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00107/" target="_blank" rel="noopener">
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4973655200308_s1.jpg" alt="リッチェル ひんやりしないおふろマットN" loading="lazy"></div>
           <div class="product-body">
@@ -419,10 +457,13 @@
         </a>
         <div class="product-meta">
           <span class="product-price"><span class="num">2,400</span>円</span>
-          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000579/1.1/" target="_blank" rel="noopener">口コミ<span class="num">258</span>件を<span class="check">check！</span></a>
+          <div class="product-actions">
+            <a class="product-detail" href="https://item.rakuten.co.jp/babuuu/bgoods-00107/" target="_blank" rel="noopener">商品詳細へ</a>
+            <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000579/1.1/" target="_blank" rel="noopener">口コミ<span class="num">258</span>件を<span class="check">check！</span></a>
+          </div>
         </div>
       </div>
-      <div class="product-card">
+      <div class="product-card reveal">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00020/" target="_blank" rel="noopener">
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4969220915937_s1.jpg" alt="アップリカ はじめてのお風呂から使えるバスチェア" loading="lazy"></div>
           <div class="product-body">
@@ -433,10 +474,13 @@
         </a>
         <div class="product-meta">
           <span class="product-price"><span class="num">3,979</span>円</span>
-          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000037/1.1/" target="_blank" rel="noopener">口コミ<span class="num">58</span>件を<span class="check">check！</span></a>
+          <div class="product-actions">
+            <a class="product-detail" href="https://item.rakuten.co.jp/babuuu/bgoods-00020/" target="_blank" rel="noopener">商品詳細へ</a>
+            <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000037/1.1/" target="_blank" rel="noopener">口コミ<span class="num">58</span>件を<span class="check">check！</span></a>
+          </div>
         </div>
       </div>
-      <div class="product-card">
+      <div class="product-card reveal">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00108/" target="_blank" rel="noopener">
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4973655200407_s1.jpg" alt="リッチェル ひんやりしないおふろチェアN" loading="lazy"></div>
           <div class="product-body">
@@ -447,10 +491,13 @@
         </a>
         <div class="product-meta">
           <span class="product-price"><span class="num">4,980</span>円</span>
-          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000580/1.1/" target="_blank" rel="noopener">口コミ<span class="num">50</span>件を<span class="check">check！</span></a>
+          <div class="product-actions">
+            <a class="product-detail" href="https://item.rakuten.co.jp/babuuu/bgoods-00108/" target="_blank" rel="noopener">商品詳細へ</a>
+            <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000580/1.1/" target="_blank" rel="noopener">口コミ<span class="num">50</span>件を<span class="check">check！</span></a>
+          </div>
         </div>
       </div>
-      <div class="product-card">
+      <div class="product-card reveal">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00112/" target="_blank" rel="noopener">
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4973655460207_s1.jpg" alt="リッチェル バスチェア マット付R" loading="lazy"></div>
           <div class="product-body">
@@ -461,10 +508,13 @@
         </a>
         <div class="product-meta">
           <span class="product-price"><span class="num">5,950</span>円</span>
-          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000585/1.1/" target="_blank" rel="noopener">口コミ<span class="num">4</span>件を<span class="check">check！</span></a>
+          <div class="product-actions">
+            <a class="product-detail" href="https://item.rakuten.co.jp/babuuu/bgoods-00112/" target="_blank" rel="noopener">商品詳細へ</a>
+            <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000585/1.1/" target="_blank" rel="noopener">口コミ<span class="num">4</span>件を<span class="check">check！</span></a>
+          </div>
         </div>
       </div>
-      <div class="product-card">
+      <div class="product-card reveal">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00118/" target="_blank" rel="noopener">
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4945680203913_s1.jpg" alt="リッチェル ふかふかベビーバスK" loading="lazy"></div>
           <div class="product-body">
@@ -475,10 +525,13 @@
         </a>
         <div class="product-meta">
           <span class="product-price"><span class="num">3,630</span>円</span>
-          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000584/1.1/" target="_blank" rel="noopener">口コミ<span class="num">3</span>件を<span class="check">check！</span></a>
+          <div class="product-actions">
+            <a class="product-detail" href="https://item.rakuten.co.jp/babuuu/bgoods-00118/" target="_blank" rel="noopener">商品詳細へ</a>
+            <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000584/1.1/" target="_blank" rel="noopener">口コミ<span class="num">3</span>件を<span class="check">check！</span></a>
+          </div>
         </div>
       </div>
-      <div class="product-card">
+      <div class="product-card reveal">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00140/" target="_blank" rel="noopener">
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4571369270152_s1.jpg" alt="スイマーバ タミリング キャンディベア" loading="lazy"></div>
           <div class="product-body">
@@ -489,10 +542,13 @@
         </a>
         <div class="product-meta">
           <span class="product-price"><span class="num">2,970</span>円</span>
-          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000638/1.1/" target="_blank" rel="noopener">口コミ<span class="num">72</span>件を<span class="check">check！</span></a>
+          <div class="product-actions">
+            <a class="product-detail" href="https://item.rakuten.co.jp/babuuu/bgoods-00140/" target="_blank" rel="noopener">商品詳細へ</a>
+            <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000638/1.1/" target="_blank" rel="noopener">口コミ<span class="num">72</span>件を<span class="check">check！</span></a>
+          </div>
         </div>
       </div>
-      <div class="product-card">
+      <div class="product-card reveal">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/swimava-001/" target="_blank" rel="noopener">
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/swimava_nr_s1.jpg" alt="スイマーバ うきわ首リング" loading="lazy"></div>
           <div class="product-body">
@@ -503,10 +559,13 @@
         </a>
         <div class="product-meta">
           <span class="product-price"><span class="num">3,520</span>円</span>
-          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000130/1.1/" target="_blank" rel="noopener">口コミ<span class="num">44</span>件を<span class="check">check！</span></a>
+          <div class="product-actions">
+            <a class="product-detail" href="https://item.rakuten.co.jp/babuuu/swimava-001/" target="_blank" rel="noopener">商品詳細へ</a>
+            <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000130/1.1/" target="_blank" rel="noopener">口コミ<span class="num">44</span>件を<span class="check">check！</span></a>
+          </div>
         </div>
       </div>
-      <div class="product-card">
+      <div class="product-card reveal">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00400/" target="_blank" rel="noopener">
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/bgoods-00400_s1.jpg" alt="リッチェル トイサポ 補助便座" loading="lazy"></div>
           <div class="product-body">
@@ -517,7 +576,10 @@
         </a>
         <div class="product-meta">
           <span class="product-price"><span class="num">3,750</span>円</span>
-          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10001045/1.1/" target="_blank" rel="noopener">口コミ<span class="num">50</span>件を<span class="check">check！</span></a>
+          <div class="product-actions">
+            <a class="product-detail" href="https://item.rakuten.co.jp/babuuu/bgoods-00400/" target="_blank" rel="noopener">商品詳細へ</a>
+            <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10001045/1.1/" target="_blank" rel="noopener">口コミ<span class="num">50</span>件を<span class="check">check！</span></a>
+          </div>
         </div>
       </div>
     </div>
@@ -530,7 +592,7 @@
       <p class="lead">階段やキッチンの前に置くだけで、おうちの中を安心して遊べる空間に。</p>
     </div>
     <div class="product-grid">
-      <div class="product-card">
+      <div class="product-card reveal">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00327/" target="_blank" rel="noopener">
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4930969630047_s1.jpg" alt="カトージ 木製ベビーサークル" loading="lazy"></div>
           <div class="product-body">
@@ -541,10 +603,13 @@
         </a>
         <div class="product-meta">
           <span class="product-price"><span class="num">8,700</span>円</span>
-          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000918/1.1/" target="_blank" rel="noopener">口コミ<span class="num">28</span>件を<span class="check">check！</span></a>
+          <div class="product-actions">
+            <a class="product-detail" href="https://item.rakuten.co.jp/babuuu/bgoods-00327/" target="_blank" rel="noopener">商品詳細へ</a>
+            <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000918/1.1/" target="_blank" rel="noopener">口コミ<span class="num">28</span>件を<span class="check">check！</span></a>
+          </div>
         </div>
       </div>
-      <div class="product-card">
+      <div class="product-card reveal">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00125/" target="_blank" rel="noopener">
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/bgoods-00125_s1.jpg" alt="リッチェル ベビーサークル パーテーション" loading="lazy"></div>
           <div class="product-body">
@@ -555,10 +620,13 @@
         </a>
         <div class="product-meta">
           <span class="product-price"><span class="num">4,580</span>円</span>
-          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000597/1.1/" target="_blank" rel="noopener">口コミ<span class="num">1</span>件を<span class="check">check！</span></a>
+          <div class="product-actions">
+            <a class="product-detail" href="https://item.rakuten.co.jp/babuuu/bgoods-00125/" target="_blank" rel="noopener">商品詳細へ</a>
+            <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000597/1.1/" target="_blank" rel="noopener">口コミ<span class="num">1</span>件を<span class="check">check！</span></a>
+          </div>
         </div>
       </div>
-      <div class="product-card">
+      <div class="product-card reveal">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00368/" target="_blank" rel="noopener">
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4930969635172_s1.jpg" alt="カトージ 木製ベビーフェンス ナチュラル" loading="lazy"></div>
           <div class="product-body">
@@ -569,7 +637,10 @@
         </a>
         <div class="product-meta">
           <span class="product-price"><span class="num">12,100</span>円</span>
-          <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000995/1.1/" target="_blank" rel="noopener">口コミ<span class="num">1</span>件を<span class="check">check！</span></a>
+          <div class="product-actions">
+            <a class="product-detail" href="https://item.rakuten.co.jp/babuuu/bgoods-00368/" target="_blank" rel="noopener">商品詳細へ</a>
+            <a class="product-reviews" href="https://review.rakuten.co.jp/item/1/422856_10000995/1.1/" target="_blank" rel="noopener">口コミ<span class="num">1</span>件を<span class="check">check！</span></a>
+          </div>
         </div>
       </div>
     </div>
@@ -647,14 +718,14 @@
 <section class="hometime" id="hometime">
   <div class="section-head">
     <p class="eyebrow">HOME TIME / おうち時間</p>
-    <h2>ベビーチェア＆キッズチェア<br>どれがいいか迷っちゃう・・・</h2>
+    <h2 class="title-lg">ベビーチェア＆キッズチェア<br>どれがいいか<br>迷っちゃう・・・</h2>
     <p class="lead">木製、大人まで使える、軽量、テーブル付き。特徴で選べる4タイプをご紹介します。</p>
   </div>
 
   <div class="product-group">
     <p class="group-label">木製であたたかみのある1台</p>
     <div class="product-grid">
-      <div class="product-card">
+      <div class="product-card reveal">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00187/" target="_blank" rel="noopener">
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/yamatoya/s1/4539066036709_s1.jpg" alt="大和屋 すくすくチェア GL" loading="lazy"></div>
           <div class="product-body">
@@ -665,6 +736,9 @@
         </a>
         <div class="product-meta">
           <span class="product-price"><span class="num">19,800</span>円</span>
+          <div class="product-actions">
+            <a class="product-detail" href="https://item.rakuten.co.jp/babuuu/bgoods-00187/" target="_blank" rel="noopener">商品詳細へ</a>
+          </div>
         </div>
       </div>
     </div>
@@ -673,7 +747,7 @@
   <div class="product-group">
     <p class="group-label">組み替えて大きくなっても使える</p>
     <div class="product-grid">
-      <div class="product-card">
+      <div class="product-card reveal">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00425/" target="_blank" rel="noopener">
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4930969176033_s1.jpg" alt="カトージ 2WAYステップ&チェア ノボルン" loading="lazy"></div>
           <div class="product-body">
@@ -684,6 +758,9 @@
         </a>
         <div class="product-meta">
           <span class="product-price"><span class="num">4,378</span>円</span>
+          <div class="product-actions">
+            <a class="product-detail" href="https://item.rakuten.co.jp/babuuu/bgoods-00425/" target="_blank" rel="noopener">商品詳細へ</a>
+          </div>
         </div>
       </div>
     </div>
@@ -692,7 +769,7 @@
   <div class="product-group">
     <p class="group-label">軽量で折りたためる</p>
     <div class="product-grid">
-      <div class="product-card">
+      <div class="product-card reveal">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00321/" target="_blank" rel="noopener">
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4930969195065_s1.jpg" alt="カトージ 折りたたみパイプイス" loading="lazy"></div>
           <div class="product-body">
@@ -703,6 +780,9 @@
         </a>
         <div class="product-meta">
           <span class="product-price"><span class="num">1,540</span>円</span>
+          <div class="product-actions">
+            <a class="product-detail" href="https://item.rakuten.co.jp/babuuu/bgoods-00321/" target="_blank" rel="noopener">商品詳細へ</a>
+          </div>
         </div>
       </div>
     </div>
@@ -711,7 +791,7 @@
   <div class="product-group">
     <p class="group-label">テーブル付き・高さ調整できる</p>
     <div class="product-grid">
-      <div class="product-card">
+      <div class="product-card reveal">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00127/" target="_blank" rel="noopener">
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4945680207348_s1.jpg" alt="リッチェル 2WAYごきげんチェア" loading="lazy"></div>
           <div class="product-body">
@@ -722,6 +802,9 @@
         </a>
         <div class="product-meta">
           <span class="product-price"><span class="num">6,930</span>円</span>
+          <div class="product-actions">
+            <a class="product-detail" href="https://item.rakuten.co.jp/babuuu/bgoods-00127/" target="_blank" rel="noopener">商品詳細へ</a>
+          </div>
         </div>
       </div>
     </div>
@@ -774,6 +857,24 @@
       frame.style.height = Math.max(600, e.data.height) + 'px';
     }
   });
+})();
+
+(function(){
+  var items = document.querySelectorAll('.reveal');
+  if(!items.length) return;
+  if(!('IntersectionObserver' in window) || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)){
+    items.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.15, rootMargin:'0px 0px -8% 0px' });
+  items.forEach(function(el){ io.observe(el); });
 })();
 </script>
 </body>
