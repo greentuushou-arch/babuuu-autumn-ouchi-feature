@@ -168,6 +168,7 @@
     display:flex;
     flex-direction:column;
     flex:1;
+    min-width:0;
     text-decoration:none;
     color:inherit;
   }
@@ -236,6 +237,7 @@
   }
   .product-detail{
     flex:1;
+    min-width:0;
     display:block;
     text-align:center;
     font-size:13px;
@@ -244,12 +246,15 @@
     background:var(--paper);
     border:2px solid var(--ink);
     border-radius:999px;
-    padding:10px 10px;
+    padding:10px 6px;
+    overflow:hidden;
+    text-overflow:ellipsis;
     white-space:nowrap;
     text-decoration:none;
   }
   .product-reviews{
     flex:1.5;
+    min-width:0;
     display:block;
     text-align:center;
     font-size:13.5px;
@@ -257,7 +262,9 @@
     color:#fff;
     background:var(--pink);
     border-radius:999px;
-    padding:10px 10px;
+    padding:10px 6px;
+    overflow:hidden;
+    text-overflow:ellipsis;
     white-space:nowrap;
     text-decoration:none;
     cursor:pointer;
@@ -708,7 +715,7 @@
 
 <section class="play" id="play">
   <div class="section-head">
-    <p class="lead">窓についた曇りを指でなぞってふきとってみよう。なにが出てくるかな？運が良ければ、クーポンも見つかるよ♪</p>
+    <p class="lead">まどを なぞって、かくれている ものを あててみよう。5回目にはプレゼント！</p>
   </div>
   <div class="game-frame">
     <iframe src="game.html" title="まどそうじゲーム" loading="lazy"></iframe>
