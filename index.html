@@ -131,16 +131,16 @@
     border-bottom:3px solid var(--ink);
   }
   .product-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(170px, 1fr));
-    gap:18px;
+    display:flex;
+    flex-direction:column;
+    gap:28px;
   }
   .product-card{
     display:flex;
     flex-direction:column;
     background:var(--paper);
     border:2.5px solid var(--ink);
-    border-radius:16px;
+    border-radius:20px;
     overflow:hidden;
   }
   .product-link{
@@ -156,27 +156,28 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:12px;
+    padding:18px;
     border-bottom:2.5px solid var(--ink);
   }
   .product-photo img{ width:100%; height:100%; object-fit:contain; }
   .product-body{
-    padding:14px 16px 10px;
+    padding:18px 20px 14px;
     display:flex;
     flex-direction:column;
-    gap:8px;
+    gap:10px;
     flex:1;
+    justify-content:center;
   }
   .product-name{
     margin:0;
-    font-weight:700;
-    font-size:14.5px;
+    font-weight:900;
+    font-size:17px;
     line-height:1.5;
   }
   .product-desc{
     margin:0;
-    font-size:12.5px;
-    line-height:1.65;
+    font-size:14px;
+    line-height:1.8;
     color:var(--ink);
   }
   .product-tags{
@@ -185,15 +186,15 @@
     list-style:none;
     display:flex;
     flex-wrap:wrap;
-    gap:5px;
+    gap:6px;
   }
   .product-tags li{
-    font-size:10.5px;
+    font-size:11.5px;
     font-weight:700;
     color:var(--ink);
     background:var(--yellow);
     border-radius:999px;
-    padding:3px 9px;
+    padding:4px 11px;
   }
   .product-tags li:nth-child(2){ background:var(--pink); color:#fff; }
   .product-tags li:nth-child(3){ background:var(--blue); color:#fff; }
@@ -202,7 +203,7 @@
     flex-direction:column;
     align-items:stretch;
     gap:10px;
-    padding:10px 16px 16px;
+    padding:14px 20px 20px;
     border-top:2px solid var(--ink);
   }
   .product-price{ font-weight:700; font-size:17px; }
@@ -222,6 +223,19 @@
   }
   .product-reviews:hover{ background:#E8397A; }
   .product-reviews .num{ font-family:'Jost',sans-serif; }
+  @media (min-width:600px){
+    .product-link{ flex-direction:row; }
+    .product-photo{
+      width:280px;
+      flex:0 0 280px;
+      border-bottom:none;
+      border-right:2.5px solid var(--ink);
+    }
+    .product-body{ padding:22px 26px; }
+    .product-name{ font-size:18px; }
+    .product-meta{ flex-direction:row; align-items:center; justify-content:space-between; }
+    .product-reviews{ flex:0 0 auto; padding:11px 24px; }
+  }
 
   /* ---------- Transition ---------- */
   .transition{
@@ -378,8 +392,8 @@
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4973655200308_s1.jpg" alt="リッチェル ひんやりしないおふろマットN" loading="lazy"></div>
           <div class="product-body">
             <p class="product-name">リッチェル ひんやりしないおふろマットN</p>
-            <p class="product-desc">冷たくない保温マットで、お風呂の待ち時間もあたたかく。</p>
-            <ul class="product-tags"><li>冷たくない</li><li>お手入れ簡単</li></ul>
+            <p class="product-desc">ひんやりしない特殊素材のマットで、お風呂の待ち時間もぽかぽか。汚れてもさっと拭けてお手入れもラクラク。</p>
+            <ul class="product-tags"><li>冷たくない</li><li>お手入れ簡単</li><li>待ち時間も快適</li></ul>
           </div>
         </a>
         <div class="product-meta">
@@ -392,8 +406,8 @@
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4969220915937_s1.jpg" alt="アップリカ はじめてのお風呂から使えるバスチェア" loading="lazy"></div>
           <div class="product-body">
             <p class="product-name">アップリカ はじめてのお風呂から使えるバスチェア</p>
-            <p class="product-desc">首すわり前の新生児から2歳まで、寝かせて洗える安心設計。</p>
-            <ul class="product-tags"><li>新生児から2歳まで</li><li>寝かせて洗える</li></ul>
+            <p class="product-desc">首がすわる前の新生児期から2歳頃まで、寝かせた姿勢でも座らせた姿勢でも使える2WAY設計。ひとりでもお風呂に入れやすい。</p>
+            <ul class="product-tags"><li>新生児から2歳まで</li><li>寝かせて洗える</li><li>ひとりでも入れやすい</li></ul>
           </div>
         </a>
         <div class="product-meta">
@@ -406,8 +420,8 @@
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4973655200407_s1.jpg" alt="リッチェル ひんやりしないおふろチェアN" loading="lazy"></div>
           <div class="product-body">
             <p class="product-name">リッチェル ひんやりしないおふろチェアN</p>
-            <p class="product-desc">おすわりできる子向け。冷たくならず、待つ時間も快適に。</p>
-            <ul class="product-tags"><li>ひんやりしない</li><li>おすわり期から</li></ul>
+            <p class="product-desc">おすわりが安定してきた子向けのバスチェア。座面がひんやりしないから、洗い待ちの時間も嫌がらずに座っていられる。</p>
+            <ul class="product-tags"><li>ひんやりしない</li><li>おすわり期から</li><li>洗い待ちに便利</li></ul>
           </div>
         </a>
         <div class="product-meta">
@@ -420,8 +434,8 @@
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4973655460207_s1.jpg" alt="リッチェル バスチェア マット付R" loading="lazy"></div>
           <div class="product-body">
             <p class="product-name">リッチェル バスチェア マット付R</p>
-            <p class="product-desc">マット付きで首すわり前でも寝かせて洗える1台2役。</p>
-            <ul class="product-tags"><li>マット付き</li><li>首すわり前から</li></ul>
+            <p class="product-desc">マットとチェアが1台2役。首すわり前は寝かせて、おすわりできるようになったら座らせてと、成長に合わせて使い方を変えられる。</p>
+            <ul class="product-tags"><li>マット付き</li><li>首すわり前から</li><li>1台2役</li></ul>
           </div>
         </a>
         <div class="product-meta">
@@ -434,8 +448,8 @@
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4945680203913_s1.jpg" alt="リッチェル ふかふかベビーバスK" loading="lazy"></div>
           <div class="product-body">
             <p class="product-name">リッチェル ふかふかベビーバスK</p>
-            <p class="product-desc">ふかふかクッションで新生児の沐浴をやさしくサポート。</p>
-            <ul class="product-tags"><li>新生児の沐浴</li><li>コンパクト折りたたみ</li></ul>
+            <p class="product-desc">空気を含んだふかふかクッションが新生児のからだをやさしく支える沐浴ベビーバス。使わないときは折りたたんでコンパクトに収納できる。</p>
+            <ul class="product-tags"><li>新生児の沐浴</li><li>コンパクト折りたたみ</li><li>やわらかクッション</li></ul>
           </div>
         </a>
         <div class="product-meta">
@@ -448,8 +462,8 @@
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4571369270152_s1.jpg" alt="スイマーバ タミリング キャンディベア" loading="lazy"></div>
           <div class="product-body">
             <p class="product-name">スイマーバ タミリング キャンディベア</p>
-            <p class="product-desc">腕に着けられる浮き輪で、お風呂遊びがもっと楽しく。</p>
-            <ul class="product-tags"><li>腕につけるうきわ</li><li>お風呂遊び用</li></ul>
+            <p class="product-desc">腕にはめるだけの浮き輪で、両手が自由に動くからお風呂遊びがもっと楽しく。キャンディベアのデザインもかわいい。</p>
+            <ul class="product-tags"><li>腕につけるうきわ</li><li>お風呂遊び用</li><li>両手が自由に</li></ul>
           </div>
         </a>
         <div class="product-meta">
@@ -462,8 +476,8 @@
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/swimava_nr_s1.jpg" alt="スイマーバ うきわ首リング" loading="lazy"></div>
           <div class="product-body">
             <p class="product-name">スイマーバ うきわ首リング</p>
-            <p class="product-desc">定番の首リングで、湯船でのプカプカ体験デビュー。</p>
-            <ul class="product-tags"><li>定番のうきわ</li><li>ギフトにも</li></ul>
+            <p class="product-desc">スイマーバの定番アイテム。首につけて湯船に浮かべるだけで、赤ちゃんが水に慣れる「プカプカ体験」デビューにぴったり。出産祝いにも人気。</p>
+            <ul class="product-tags"><li>定番のうきわ</li><li>プカプカ体験</li><li>ギフトにも</li></ul>
           </div>
         </a>
         <div class="product-meta">
@@ -476,8 +490,8 @@
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/bgoods-00400_s1.jpg" alt="リッチェル トイサポ 補助便座" loading="lazy"></div>
           <div class="product-body">
             <p class="product-name">リッチェル トイサポ 補助便座</p>
-            <p class="product-desc">踏み台・グリップ付きで、トイレトレーニングも安心スタート。</p>
-            <ul class="product-tags"><li>踏み台付き</li><li>1歳6ヶ月〜4歳頃</li></ul>
+            <p class="product-desc">踏み台とグリップが一体になった補助便座。足がしっかり床につくので、トイレトレーニングの第一歩も安心してスタートできる。</p>
+            <ul class="product-tags"><li>踏み台付き</li><li>1歳6ヶ月〜4歳頃</li><li>グリップ付き</li></ul>
           </div>
         </a>
         <div class="product-meta">
@@ -496,8 +510,8 @@
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4930969630047_s1.jpg" alt="カトージ 木製ベビーサークル" loading="lazy"></div>
           <div class="product-body">
             <p class="product-name">カトージ 木製ベビーサークル</p>
-            <p class="product-desc">好きな形に組み替えられる、置くだけの木製サークル。</p>
-            <ul class="product-tags"><li>木製</li><li>好きな形に組み替え</li></ul>
+            <p class="product-desc">パネルをつなげるだけで、四角形やコーナー型など好きな形に組み替えられる木製サークル。置くだけなので賃貸のお部屋でも使いやすい。</p>
+            <ul class="product-tags"><li>木製</li><li>好きな形に組み替え</li><li>置くだけ設置</li></ul>
           </div>
         </a>
         <div class="product-meta">
@@ -510,8 +524,8 @@
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/bgoods-00125_s1.jpg" alt="リッチェル ベビーサークル パーテーション" loading="lazy"></div>
           <div class="product-body">
             <p class="product-name">リッチェル ベビーサークル(パーテーション)</p>
-            <p class="product-desc">扉付きで出入りラク。テレビ前のパーテーションにも。</p>
-            <ul class="product-tags"><li>扉付き</li><li>置くだけ設置</li></ul>
+            <p class="product-desc">扉付きだから出入りがラクラク。テレビ前や階段前のパーテーションとしても使えて、置き方をアレンジしやすい。</p>
+            <ul class="product-tags"><li>扉付き</li><li>置くだけ設置</li><li>アレンジ自在</li></ul>
           </div>
         </a>
         <div class="product-meta">
@@ -524,8 +538,8 @@
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4930969635172_s1.jpg" alt="カトージ 木製ベビーフェンス ナチュラル" loading="lazy"></div>
           <div class="product-body">
             <p class="product-name">カトージ 木製ベビーフェンス ナチュラル</p>
-            <p class="product-desc">組み換え自由な木製フェンスで、倒れにくく安定。</p>
-            <ul class="product-tags"><li>木製</li><li>組み換え自由</li></ul>
+            <p class="product-desc">パネルの数や向きを自由に組み換えられる木製フェンス。脚部が広めの安定設計で、赤ちゃんが寄りかかっても倒れにくい。</p>
+            <ul class="product-tags"><li>木製</li><li>組み換え自由</li><li>倒れにくい安定設計</li></ul>
           </div>
         </a>
         <div class="product-meta">
@@ -620,8 +634,8 @@
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/yamatoya/s1/4539066036709_s1.jpg" alt="大和屋 すくすくチェア GL" loading="lazy"></div>
           <div class="product-body">
             <p class="product-name">大和屋 すくすくチェア GL</p>
-            <p class="product-desc">木製のあたたかな質感。7か月から80kgの大人まで、家族みんなで長く使える。</p>
-            <ul class="product-tags"><li>木製</li><li>7か月〜大人まで</li></ul>
+            <p class="product-desc">木製ならではのあたたかな質感で、インテリアにもなじみやすい。座面と足置きの高さを細かく調整でき、7か月から80kgの大人まで家族みんなで使える。</p>
+            <ul class="product-tags"><li>木製</li><li>7か月〜大人まで</li><li>高さ細かく調整</li></ul>
           </div>
         </a>
         <div class="product-meta">
@@ -639,8 +653,8 @@
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4930969176033_s1.jpg" alt="カトージ 2WAYステップ&チェア ノボルン" loading="lazy"></div>
           <div class="product-body">
             <p class="product-name">カトージ 2WAYステップ&チェア ノボルン</p>
-            <p class="product-desc">ステップにもチェアにも組み替えできて、耐荷重80kgの大人になっても活躍。</p>
-            <ul class="product-tags"><li>組み替え可能</li><li>耐荷重80kg</li></ul>
+            <p class="product-desc">ステップ台としてもチェアとしても組み替えて使える2WAY設計。成長に合わせて形を変えながら、耐荷重80kgの大人になっても長く活躍する。</p>
+            <ul class="product-tags"><li>組み替え可能</li><li>耐荷重80kg</li><li>2WAY設計</li></ul>
           </div>
         </a>
         <div class="product-meta">
@@ -658,8 +672,8 @@
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/0917kd/default/s1/4930969195065_s1.jpg" alt="カトージ 折りたたみパイプイス" loading="lazy"></div>
           <div class="product-body">
             <p class="product-name">カトージ 折りたたみパイプイス</p>
-            <p class="product-desc">本体重量1.5kgと軽量で、さっと折りたたんで収納できるコンパクトさ。</p>
-            <ul class="product-tags"><li>軽量1.5kg</li><li>折りたたみ可能</li></ul>
+            <p class="product-desc">本体重量わずか1.5kgと軽量で、片手でもラクラク持ち運べる。使わないときはさっと折りたたんで、隙間にコンパクトに収納できる。</p>
+            <ul class="product-tags"><li>軽量1.5kg</li><li>折りたたみ可能</li><li>持ち運びラク</li></ul>
           </div>
         </a>
         <div class="product-meta">
@@ -677,8 +691,8 @@
           <div class="product-photo"><img src="https://shop.r10s.jp/babuuu/cabinet/kd0000/default/s1/4945680207348_s1.jpg" alt="リッチェル 2WAYごきげんチェア" loading="lazy"></div>
           <div class="product-body">
             <p class="product-name">リッチェル 2WAYごきげんチェア</p>
-            <p class="product-desc">座面高さを2段階調節。テーブル付きで、成長に合わせて長く使える。</p>
-            <ul class="product-tags"><li>2段階高さ調整</li><li>テーブル付き</li></ul>
+            <p class="product-desc">座面の高さを2段階で調節できるから、ローチェアからテーブルチェアへと成長に合わせて使い分けられる。取り外せるテーブル付きで食事の練習にも便利。</p>
+            <ul class="product-tags"><li>2段階高さ調整</li><li>テーブル付き</li><li>食事の練習に</li></ul>
           </div>
         </a>
         <div class="product-meta">
