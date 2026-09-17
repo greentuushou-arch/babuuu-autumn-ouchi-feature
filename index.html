@@ -109,6 +109,7 @@
   /* ---------- Outing ---------- */
   .outing{ background:var(--paper); }
   .outing-kicker{
+    position:relative;
     align-self:center;
     margin:0;
     background:var(--yellow);
@@ -118,6 +119,22 @@
     line-height:1.6;
     padding:7px 18px;
     border-radius:10px;
+  }
+  .outing-kicker::after{
+    content:'';
+    position:absolute;
+    left:50%;
+    bottom:-9px;
+    transform:translateX(-50%);
+    width:0;
+    height:0;
+    border-left:9px solid transparent;
+    border-right:9px solid transparent;
+    border-top:10px solid var(--yellow);
+  }
+  @media (min-width:600px){
+    .outing-kicker{ white-space:nowrap; }
+    .outing-kicker .mobile-break{ display:none; }
   }
   .product-group{ max-width:960px; margin:0 auto 48px; }
   .product-group:last-child{ margin-bottom:0; }
@@ -381,11 +398,15 @@
 
 <section class="outing" id="shopping">
   <div class="section-head">
-    <p class="outing-kicker">口コミも参考にして<br>ピッタリを探そう！</p>
+    <p class="outing-kicker">口コミも参考にして<br class="mobile-break">ピッタリを探そう！</p>
   </div>
 
   <div class="product-group">
-    <p class="group-label">お風呂大好き！トイレトレーニングも楽しく！</p>
+    <div class="section-head">
+      <p class="eyebrow">BATH & TOILET TRAINING</p>
+      <h2>お風呂大好き！<br>トイレトレーニングも楽しく！</h2>
+      <p class="lead">毎日のバスタイムとトイレトレーニングを、もっと楽しく快適に。人気アイテムをセレクトしました。</p>
+    </div>
     <div class="product-grid">
       <div class="product-card">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00107/" target="_blank" rel="noopener">
@@ -503,7 +524,11 @@
   </div>
 
   <div class="product-group">
-    <p class="group-label">お家で安心して遊べるベビーゲート</p>
+    <div class="section-head">
+      <p class="eyebrow">BABY GATE</p>
+      <h2>お家で安心して遊べる<br>ベビーゲート</h2>
+      <p class="lead">階段やキッチンの前に置くだけで、おうちの中を安心して遊べる空間に。</p>
+    </div>
     <div class="product-grid">
       <div class="product-card">
         <a class="product-link" href="https://item.rakuten.co.jp/babuuu/bgoods-00327/" target="_blank" rel="noopener">
