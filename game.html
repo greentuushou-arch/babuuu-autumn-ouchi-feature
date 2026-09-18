@@ -294,15 +294,8 @@
     text-align:center;
     display:flex; flex-direction:column; align-items:center; gap:14px;
   }
-  .coupon-reveal p{ margin:0; font-size:17px; font-weight:500; color:var(--on-dark); }
-  .reveal-btn{
-    font-weight:700; font-size:17px;
-    color:#fff; background:var(--pink);
-    border:none; padding:14px 32px; border-radius:999px; cursor:pointer;
-    box-shadow:0 12px 20px -10px rgba(255,76,134,.6);
-    animation:pulse 1.8s ease-in-out infinite;
-  }
-  @media (prefers-reduced-motion: reduce){ .reveal-btn{animation:none;} }
+  .coupon-reveal p{ margin:0; font-size:17px; font-weight:500; color:var(--on-dark); animation:pulse 1.8s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce){ .coupon-reveal p{animation:none;} }
   @keyframes pulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.05); } }
 
   .result{
@@ -537,7 +530,6 @@
 
   <div class="coupon-reveal" id="couponReveal" hidden>
     <p>まどの むこうに クーポンが かくれてるよ</p>
-    <button class="reveal-btn" id="couponRevealBtn" type="button">けっかを みる！</button>
   </div>
 
   <div class="result" id="result" hidden>
@@ -577,7 +569,6 @@
   var roundClearLabel = document.getElementById('roundClearLabel');
   var nextBtn = document.getElementById('nextBtn');
   var couponReveal = document.getElementById('couponReveal');
-  var couponRevealBtn = document.getElementById('couponRevealBtn');
 
   var FRUITS = ['strawberry','apple','orange','banana','grape','peach'];
   var ANIMALS = ['bear','cat','dog','rabbit','squirrel','elephant'];
@@ -771,7 +762,10 @@
     canvas.style.opacity = '0';
     hint.classList.add('hidden');
     wipingControls.hidden = true;
-    if(ROUNDS[roundIndex].type === 'coupon') couponReveal.hidden = false;
+    if(ROUNDS[roundIndex].type === 'coupon'){
+      couponReveal.hidden = false;
+      setTimeout(revealCoupon, 1200);
+    }
   }
 
   function pointFromEvent(e){
@@ -922,7 +916,7 @@
     resultPanel.scrollIntoView({ behavior:'smooth', block:'nearest' });
   }
 
-  couponRevealBtn.addEventListener('click', function(){
+  function revealCoupon(){
     couponReveal.hidden = true;
     var tier = COUPON_TIERS[couponOutcome];
     sceneSvg.innerHTML = tier.scene();
@@ -934,7 +928,7 @@
       renderDots();
       showCouponResult(couponOutcome);
     }, 650);
-  });
+  }
 
   function startRound(i){
     roundIndex = i;
