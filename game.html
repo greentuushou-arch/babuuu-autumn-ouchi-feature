@@ -324,6 +324,10 @@
     padding:14px 18px; border-radius:999px;
     box-shadow:0 10px 18px -10px rgba(255,182,72,.8);
   }
+  .coupon-get-btn{
+    background:var(--pink); color:#fff;
+    box-shadow:0 10px 18px -10px rgba(255,76,134,.7);
+  }
   .reset-btn{
     background:none; border:none; font-size:14px; font-weight:500;
     color:var(--ink); text-decoration:underline; cursor:pointer; padding:4px;
@@ -537,6 +541,7 @@
     <p class="result-coupon" id="resultCoupon"></p>
     <p class="result-body">秋のおでかけ日和。ママといっしょに おそとへ行こう。</p>
     <div class="result-actions">
+      <a class="cta-btn coupon-get-btn" href="#" target="_blank" rel="noopener" id="couponGetBtn" hidden>クーポンを受け取る</a>
       <a class="cta-btn" href="index.html#shopping" target="_top" id="ctaBtn">おでかけアイテムを見る</a>
       <button class="reset-btn" id="resetBtn" type="button">もういちど あそぶ</button>
     </div>
@@ -545,6 +550,19 @@
 
 <script>
 (function(){
+  // ==========================================================
+  // ▼▼▼ クーポンのリンク設定（ここに3種類のURLを貼ってください） ▼▼▼
+  // 1等・2等・3等それぞれの「クーポンを取得する」ページのURLを
+  // ""の中に貼り付けてください（例: 'https://item.rakuten.co.jp/...'）。
+  // 空のままだと「クーポンを受け取る」ボタンは表示されません。
+  var COUPON_URLS = {
+    first:  '',  // 1等（100円OFF）のクーポン取得URL
+    second: '',  // 2等（55円OFF）のクーポン取得URL
+    third:  ''   // 3等（39円OFF）のクーポン取得URL
+  };
+  // ▲▲▲ ここまで ▲▲▲
+  // ==========================================================
+
   var glass = document.getElementById('glass');
   var canvas = document.getElementById('fogCanvas');
   var ctx = canvas.getContext('2d');
@@ -560,6 +578,7 @@
   var autoWipeBtn = document.getElementById('autoWipeBtn');
   var wipingControls = document.getElementById('wipingControls');
   var resetBtn = document.getElementById('resetBtn');
+  var couponGetBtn = document.getElementById('couponGetBtn');
   var progressDots = document.getElementById('progressDots');
   var sceneSvg = document.getElementById('sceneSvg');
   var quizPanel = document.getElementById('quizPanel');
@@ -912,6 +931,13 @@
     var tier = COUPON_TIERS[outcome];
     resultTitle.textContent = tier.label + '！おめでとう！';
     resultCoupon.innerHTML = '<span class="coupon-badge">GOGOクーポン <span class="num">' + tier.amount + '</span>円OFF</span> プレゼント♪';
+    var couponUrl = COUPON_URLS[outcome];
+    if(couponUrl){
+      couponGetBtn.href = couponUrl;
+      couponGetBtn.hidden = false;
+    } else {
+      couponGetBtn.hidden = true;
+    }
     resultPanel.hidden = false;
     resultPanel.scrollIntoView({ behavior:'smooth', block:'nearest' });
   }
