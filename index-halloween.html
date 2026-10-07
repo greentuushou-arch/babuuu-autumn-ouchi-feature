@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ハロウィンゲームでクーポンゲット｜babuuu</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Jost:wght@500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Jost:wght@500;600&display=swap');
 
   :root{
     --ink:#2A1A10;
@@ -24,6 +24,8 @@
     background:var(--orange);
     color:var(--ink);
     font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;
+    line-height:1.9;
+    letter-spacing:.03em;
   }
   .wrap{
     max-width:760px;
@@ -56,23 +58,26 @@
   }
   .eyebrow{
     margin:0;
+    font-family:'Jost','Noto Sans JP',sans-serif;
     font-size:14px;
-    font-weight:700;
-    letter-spacing:.08em;
+    font-weight:600;
+    letter-spacing:.1em;
     color:var(--orange-deep);
   }
   .section-head h2{
     margin:0;
-    font-family:'Zen Maru Gothic',sans-serif;
+    font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;
     font-weight:900;
-    font-size:clamp(30px,8vw,42px);
-    line-height:1.35;
+    font-size:clamp(28px,7.6vw,40px);
+    line-height:1.55;
+    letter-spacing:.05em;
     text-wrap:balance;
   }
   .section-head .lead{
     margin:0;
     font-size:15.5px;
-    line-height:1.9;
+    line-height:2;
+    letter-spacing:.04em;
     max-width:34ch;
     margin-inline:auto;
   }
@@ -92,18 +97,20 @@
     margin:0 0 14px;
     background:var(--purple);
     color:#FFFFFF;
-    font-weight:900;
+    font-family:'Jost',sans-serif;
+    font-weight:600;
     font-size:14px;
-    letter-spacing:.12em;
+    letter-spacing:.14em;
     padding:7px 18px;
     border-radius:999px;
   }
   .fv h1{
     margin:0 0 6px;
-    font-family:'Zen Maru Gothic',sans-serif;
+    font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;
     font-weight:900;
-    font-size:clamp(34px,9.5vw,52px);
-    line-height:1.3;
+    font-size:clamp(32px,9vw,50px);
+    line-height:1.5;
+    letter-spacing:.05em;
     color:#FFFFFF;
     text-shadow:0 3px 0 var(--purple-deep);
   }
@@ -111,7 +118,8 @@
     margin:0 auto;
     font-size:15px;
     font-weight:700;
-    line-height:1.8;
+    line-height:1.95;
+    letter-spacing:.05em;
     max-width:30ch;
   }
   .fv-art{
@@ -234,8 +242,8 @@
     flex:1;
     justify-content:center;
   }
-  .product-name{ margin:0; font-weight:900; font-size:17px; line-height:1.5; }
-  .product-desc{ margin:0; font-size:14px; line-height:1.8; }
+  .product-name{ margin:0; font-weight:900; font-size:17px; line-height:1.6; letter-spacing:.04em; }
+  .product-desc{ margin:0; font-size:14px; line-height:1.95; letter-spacing:.04em; }
   .product-tags{ margin:0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:6px; }
   .product-tags li{
     font-size:11.5px;
@@ -353,10 +361,11 @@
   .transition-text .eyebrow{ color:#FFD9A0; }
   .transition-text h2{
     margin:0;
-    font-family:'Zen Maru Gothic',sans-serif;
+    font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;
     font-weight:900;
-    font-size:clamp(24px,5.4vw,34px);
-    line-height:1.4;
+    font-size:clamp(23px,5.2vw,32px);
+    line-height:1.6;
+    letter-spacing:.05em;
     color:#FFFFFF;
     padding:0 20px;
   }
@@ -436,7 +445,7 @@
 <section class="fv">
   <p class="fv-kicker">TRICK OR TREAT</p>
   <h1>ハロウィンゲームで<br>クーポンゲット</h1>
-  <p class="fv-sub">おやこで ゲームを あそんで、おトクな クーポンを もらおう</p>
+  <p class="fv-sub">おやこで ゲームを あそんで、<br>おトクな クーポンを もらおう</p>
   <div class="fv-art">
     <img class="main" src="hellown-23.png" alt="HAPPY HALLOWEEN">
     <img class="float f-obake" src="hellowin-obake.png" alt="">

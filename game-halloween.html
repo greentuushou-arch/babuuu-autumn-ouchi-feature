@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>まほうのかがみ｜babuuu</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Jost:wght@500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Jost:wght@500;600&display=swap');
 
   :root{
     --frame-wood:#D8A93E;
@@ -34,6 +34,7 @@
     background:var(--bg);
     color:var(--on-dark);
     font-family:'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+    letter-spacing:.03em;
     padding:22px 20px 32px;
     display:flex;
     justify-content:center;
@@ -62,9 +63,11 @@
   }
   h1{
     margin:0;
-    font-family:'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    font-family:'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
     font-weight:900;
-    font-size:clamp(32px,9vw,42px);
+    font-size:clamp(30px,8.6vw,40px);
+    line-height:1.5;
+    letter-spacing:.05em;
     text-wrap:balance;
     color:var(--on-dark);
   }
@@ -473,7 +476,7 @@
       + '<circle cx="60" cy="80" r="10"/><circle cx="250" cy="60" r="7"/><circle cx="270" cy="300" r="9"/><circle cx="50" cy="320" r="6"/>'
       + '</g>'
       + '<rect x="85" y="125" width="150" height="160" rx="18" fill="#FFFFFF"/>'
-      + '<text x="160" y="235" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-weight="900" font-size="90" fill="#000000">?</text>';
+      + '<text x="160" y="235" text-anchor="middle" font-family="Noto Sans JP, sans-serif" font-weight="900" font-size="90" fill="#000000">?</text>';
   }
 
   function imageScene(src){
