@@ -364,6 +364,7 @@
   .play{ background:#1E9FD6; }
   .play .section-head .lead{ color:#FFFFFF; }
   .game-frame{
+    scroll-margin-top:10px;
     max-width:480px;
     margin:0 auto;
     border-radius:24px;
@@ -441,7 +442,7 @@
     <a class="fv-scroll" href="#shopping">アイテムを見る
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
     </a>
-    <a class="fv-scroll is-play" href="#transition">お子さまと一緒にゲームをしてみる？
+    <a class="fv-scroll is-play" href="#game">お子さまと一緒にゲームをしてみる？
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
     </a>
   </div>
@@ -726,7 +727,7 @@
   <div class="section-head">
     <p class="lead">まどを なぞって、かくれている ものを あててみよう。5回目にはプレゼント！</p>
   </div>
-  <div class="game-frame">
+  <div class="game-frame" id="game">
     <iframe src="game.html" title="まどそうじゲーム" loading="lazy"></iframe>
   </div>
 </section>
@@ -891,6 +892,31 @@
     });
   }, { threshold:0.15, rootMargin:'0px 0px -8% 0px' });
   items.forEach(function(el){ io.observe(el); });
+})();
+
+(function(){
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      ev.preventDefault();
+      t.scrollIntoView({ behavior:'smooth', block:'start' });
+      var last = -1, still = 0, polls = 0;
+      var iv = setInterval(function(){
+        polls++;
+        var y = window.scrollY;
+        still = (Math.abs(y - last) < 1) ? still + 1 : 0;
+        last = y;
+        if(still >= 2 || polls > 40){
+          clearInterval(iv);
+          var margin = parseFloat(getComputedStyle(t).scrollMarginTop) || 0;
+          if(Math.abs(t.getBoundingClientRect().top - margin) > 2){
+            t.scrollIntoView({ behavior:'instant', block:'start' });
+          }
+        }
+      }, 120);
+    });
+  });
 })();
 </script>
 </body>
